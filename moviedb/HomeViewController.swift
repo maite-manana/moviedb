@@ -16,15 +16,17 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var moviesTableView: UITableView!
     fileprivate var homePresenter = HomePresenter()
-    var contentList: [String] = ["Soy una peli"]
+    var contentList: ArraySlice<Movie> = []
+    var selectedItem = Movie()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
-        
-        alamofireGetContent()
+    
+        homePresenter.attachView(self)
+        homePresenter.getContent()
         
         
 //        let tabPageViewController = TabPageViewController.create()
@@ -49,23 +51,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         moviesTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
-    
-    static var apiKey = "053876183f264d50ee96838f8b56ba91"
-    
-    func alamofireGetContent() -> Void {
-        let params: Parameters = [
-            "api_key": "053876183f264d50ee96838f8b56ba91"
-        ]
-        
-        Alamofire.request(
-            "https://api.themoviedb.org/3/discover/movie",
-            method: .get,
-            parameters: params
-            ).responseJSON(completionHandler: { [unowned self] response in
-                print(response)
-            })
-    }
-
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -81,10 +66,35 @@ extension HomeViewController: UITableViewDataSource {
         }
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell?.textLabel?.text = contentList[indexPath.row]
+        cell?.textLabel?.text = contentList[indexPath.row].title
         
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = contentList[indexPath.row]
+        self.performSegue(withIdentifier: "contentDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let contentDetailViewController = segue.destination as! ContentDetailViewController
+        contentDetailViewController.selectedContent = selectedItem
     }
 }
 
 extension HomeViewController: UITableViewDelegate {}
+
+extension HomeViewController: HomeView {
+    func startLoading() {
+    }
+    func finishLoading() {
+    }
+    
+    func setContent(moviesList: [Movie]) {
+        contentList = moviesList[0..<5]
+        moviesTableView.reloadData()
+    }
+    
+    func setEmptyContent() {
+    }
+}

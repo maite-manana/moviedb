@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import ObjectMapper
 
 protocol HomeView {
     func startLoading()
     func finishLoading()
-    func setContent()
+    func setContent(moviesList: [Movie])
     func setEmptyContent()
 }
 
@@ -29,5 +30,15 @@ class HomePresenter {
     func getContent() {
         homeView?.startLoading()
         
+        APIManager.sharedInstance.getMovies(completionHandler: { (baseResponse) in
+            self.homeView?.finishLoading()
+            self.homeView?.setContent(moviesList: baseResponse.results!)
+//            var movies = [Movie]()
+//            let coversResponse = baseResponse.data as! Array<NSDictionary>
+//            movies = coversResponse.map({ (movieDictionary) -> Movie in
+//                Mapper<Movie>().map(movieDictionary)!
+//            })
+//            self.homeView?.setContent()
+        });
     }
 }
