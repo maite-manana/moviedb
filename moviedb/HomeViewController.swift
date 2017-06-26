@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     fileprivate var homePresenter = HomePresenter()
     var contentList: ArraySlice<Movie> = []
     var selectedItem = Movie()
+    var searchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class HomeViewController: UIViewController {
     
         homePresenter.attachView(self)
         homePresenter.getContent()
+
+        let nib = UINib(nibName: "ContentCell", bundle: nil)
+        self.moviesTableView.register(nib, forCellReuseIdentifier: "cell")
         
         
 //        let tabPageViewController = TabPageViewController.create()
@@ -56,19 +60,20 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contentList.count
+        return self.contentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        }
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
         
-        cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell?.textLabel?.text = contentList[indexPath.row].title
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.title.text = contentList[indexPath.row].title
+        cell.additionalData.text = contentList[indexPath.row].overview
+        let url = URL(string: Constants.APIConstants.kBaseImageURL + contentList[indexPath.row].posterPath!)
+        let data = try? Data(contentsOf: url!)
+        cell.poster.image = UIImage(data: data!)
         
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -79,6 +84,11 @@ extension HomeViewController: UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let contentDetailViewController = segue.destination as! ContentDetailViewController
         contentDetailViewController.selectedContent = selectedItem
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 165.0
     }
 }
 

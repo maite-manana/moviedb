@@ -22,7 +22,7 @@ class Movie: Mappable {
 
     func mapping(map: Map) {
         id <- map["id"]
-        voteAverage   <- map["vote_average"]
+        voteAverage <- map["vote_average"]
         title <- map["title"]
         posterPath <- map["poster_path"]
         overview <- map["overview"]
