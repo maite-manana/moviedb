@@ -9,10 +9,6 @@
 import Foundation
 import ObjectMapper
 
-protocol ContentDetailView {
-    func showSuccessFavMessage()
-}
-
 class ContentDetailPresenter {
     fileprivate var contentDetailView: ContentDetailView?
     

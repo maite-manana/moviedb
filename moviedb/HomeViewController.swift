@@ -34,24 +34,6 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: "ContentCell", bundle: nil)
         self.moviesTableView.register(nib, forCellReuseIdentifier: "cell")
         
-        
-//        let tabPageViewController = TabPageViewController.create()
-//        let vc1 = UIViewController()
-//        let vc2 = UIViewController()
-//        
-//        vc1.view.backgroundColor = UIColor.red
-//        vc2.view.backgroundColor = UIColor.blue
-//        
-//        tabPageViewController.tabItems = [(vc1, "Peliculas 🎥"), (vc2, "Series 🍿")]
-//
-//        let nc = UINavigationController()
-//        nc.viewControllers = [tabPageViewController]
-//        var option = TabPageOption()
-//        option.currentColor = UIColor.black
-//        option.tabMargin = 30.0
-//        tabPageViewController.option = option
-//        
-//        navigationController?.pushViewController(tabPageViewController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

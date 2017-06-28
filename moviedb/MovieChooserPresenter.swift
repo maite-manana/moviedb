@@ -9,12 +9,6 @@
 import Foundation
 import ObjectMapper
 
-protocol MovieChooserView {
-    func startLoading()
-    func finishLoading()
-    func setMovies(movieList: [Movie])
-}
-
 class MovieChooserPresenter {
     
     fileprivate var movieChooserView: MovieChooserView?

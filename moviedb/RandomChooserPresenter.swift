@@ -9,13 +9,6 @@
 import Foundation
 import ObjectMapper
 
-protocol RandomChooserView {
-    func startLoading()
-    func finishLoading()
-    func setGenres(genreList: [Genre])
-    func setRandom(movieList: [Movie])
-}
-
 class RandomChooserPresenter {
     
     fileprivate var randomChooserView: RandomChooserView?

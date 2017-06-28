@@ -9,13 +9,6 @@
 import Foundation
 import ObjectMapper
 
-protocol HomeView {
-    func startLoading()
-    func finishLoading()
-    func setContent(moviesList: [Movie])
-    func setEmptyContent()
-}
-
 class HomePresenter {
     fileprivate var homeView: HomeView?
     
