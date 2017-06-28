@@ -38,8 +38,6 @@ class MessageHandler {
                 break
             }
             
-            
-            
             return view
         }
     }

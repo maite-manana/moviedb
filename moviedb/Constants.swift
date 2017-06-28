@@ -14,5 +14,6 @@ struct Constants {
         static let kBaseURL     = "https://api.themoviedb.org/3"
         static let kApiKey = "053876183f264d50ee96838f8b56ba91"
         static let kBaseImageURL = "https://image.tmdb.org/t/p/w500"
+        static let kBaseYouTube = "https://www.youtube.com/watch?v="
     }
 }

@@ -24,14 +24,70 @@ class APIManager: NSObject {
         let params: Parameters = [
             "api_key": Constants.APIConstants.kApiKey
         ]
+        
+        Alamofire.request(
+            Constants.APIConstants.kBaseURL + "/movie/now_playing",
+            method: .get,
+            parameters: params
+            ).responseObject(completionHandler: { (response: DataResponse<BaseResponse>) -> Void in
+                let responseMovie = response.result.value!
+                completionHandler(responseMovie)
+            })
+    }
     
-//        Alamofire.request(
-//           Constants.APIConstants.kBaseURL + "/discover/movie",
-//            method: .get,
-//            parameters: params
-//            ).responseObject { (response: DataResponse<BaseResponse>) -> Void in
-//                let responseMovie = response.result.value
-//        }
+    func getSeries(completionHandler: @escaping (BaseResponse) -> Void)
+    {
+        let params: Parameters = [
+            "api_key": Constants.APIConstants.kApiKey
+        ]
+        
+        Alamofire.request(
+            Constants.APIConstants.kBaseURL + "/discover/tv",
+            method: .get,
+            parameters: params
+            ).responseObject(completionHandler: { (response: DataResponse<BaseResponse>) -> Void in
+                let responseMovie = response.result.value!
+                completionHandler(responseMovie)
+            })
+    }
+    
+    func getVideo(id: String, completionHandler: @escaping (BaseResponse) -> Void) {
+        let params: Parameters = [
+            "api_key": Constants.APIConstants.kApiKey,
+        ]
+        
+        Alamofire.request(
+            Constants.APIConstants.kBaseURL + "/movie/\(id)/videos",
+        method: .get,
+        parameters: params
+            ).responseObject(completionHandler: { (response: DataResponse<BaseResponse>) -> Void in
+                let responseVideo = response.result.value!
+                completionHandler(responseVideo)
+            })
+    }
+    
+    func getGenre(completionHandler: @escaping (GenreReport) -> Void)
+    {
+        let params: Parameters = [
+            "api_key": Constants.APIConstants.kApiKey
+        ]
+        
+        Alamofire.request(
+            Constants.APIConstants.kBaseURL + "/genre/movie/list",
+            method: .get,
+            parameters: params
+            ).responseObject(completionHandler: { (response: DataResponse<GenreReport>) -> Void in
+                let responseGenre = response.result.value!
+                completionHandler(responseGenre)
+            })
+        
+    }
+    
+    func getMoviesWithGender(genresList: [String], completionHandler: @escaping (BaseResponse) -> Void) {
+        let params: Parameters = [
+            "api_key": Constants.APIConstants.kApiKey,
+            "with_genres": genresList.joined(separator: ",")
+        ]
         
         Alamofire.request(
             Constants.APIConstants.kBaseURL + "/discover/movie",
@@ -41,5 +97,15 @@ class APIManager: NSObject {
                 let responseMovie = response.result.value!
                 completionHandler(responseMovie)
             })
+    }
+    
+    
+    func handleError(error: NSError?) -> Bool {
+        if error != nil {
+            MessageHandler.showMessage(title: "Error", body: "Ha ocurrido un error", type: messageType.ERROR)
+            return false
+        }
+
+        return true
     }
 }

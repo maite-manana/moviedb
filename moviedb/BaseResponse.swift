@@ -13,7 +13,7 @@ class BaseResponse: Mappable {
     var page: Int?
     var totalResults: Int?
     var totalPages: Int?
-    var results: [Movie]?
+    var results: AnyObject?
     
     required init?(map: Map) { }
     

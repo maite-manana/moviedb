@@ -9,19 +9,21 @@
 import UIKit
 import Foundation
 import TabPageViewController
-import Alamofire
 
 class HomeViewController: UIViewController {
-
     
     @IBOutlet weak var moviesTableView: UITableView!
+    @IBOutlet weak var loadingView: UILoadingView!
+    
     fileprivate var homePresenter = HomePresenter()
+    
     var contentList: ArraySlice<Movie> = []
     var selectedItem = Movie()
     var searchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingView.setupLoadingIndicator()
         
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
@@ -64,7 +66,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.title.text = contentList[indexPath.row].title
@@ -96,8 +98,11 @@ extension HomeViewController: UITableViewDelegate {}
 
 extension HomeViewController: HomeView {
     func startLoading() {
+        loadingView.showLoadingIndicator()
     }
+    
     func finishLoading() {
+        loadingView.hideLoadingIndicator()
     }
     
     func setContent(moviesList: [Movie]) {

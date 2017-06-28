@@ -9,4 +9,5 @@ target ‘moviedb’ do
   pod ’TabPageViewController’
   pod ’Alamofire’, ‘~> 4.4’
   pod ’AlamofireObjectMapper’, ‘~> 4.0’
+
 end

@@ -32,13 +32,14 @@ class HomePresenter {
         
         APIManager.sharedInstance.getMovies(completionHandler: { (baseResponse) in
             self.homeView?.finishLoading()
-            self.homeView?.setContent(moviesList: baseResponse.results!)
-//            var movies = [Movie]()
-//            let coversResponse = baseResponse.data as! Array<NSDictionary>
-//            movies = coversResponse.map({ (movieDictionary) -> Movie in
-//                Mapper<Movie>().map(movieDictionary)!
-//            })
-//            self.homeView?.setContent()
+            
+            var movies = [Movie]()
+            let coversResponse = baseResponse.results as! Array<NSDictionary>
+            movies = coversResponse.map({ (responseDictionary) -> Movie in
+                Mapper<Movie>().map(JSONObject: responseDictionary)!
+            })
+            
+            self.homeView?.setContent(moviesList: movies)
         });
     }
 }

@@ -11,6 +11,8 @@ import UIKit
 
 class ContentDetailViewController : UIViewController {
     
+    fileprivate var contentDetailPresenter = ContentDetailPresenter()
+    
     var selectedContent = Movie()
     
     @IBOutlet weak var contentDescription: UILabel!
@@ -18,6 +20,12 @@ class ContentDetailViewController : UIViewController {
     @IBOutlet weak var contentTitle: UILabel!
     
     @IBOutlet weak var contentImage: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        contentDetailPresenter.attachView(self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         contentTitle.text = selectedContent.title
@@ -27,18 +35,16 @@ class ContentDetailViewController : UIViewController {
         let data = try? Data(contentsOf: url!)
         contentImage.image = UIImage(data: data!)
         
-        let addButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(shareContent))
-        self.navigationItem.rightBarButtonItem = addButton
+        let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(shareContent))
+        self.navigationItem.rightBarButtonItem = shareButton
     }
     
-    @IBAction func shareContent() {
-        var url  = NSURL(string: "whatsapp://send?text=Hello%20Friends%2C%20Sharing%20some%20data%20here...%20!")
-        
-        //Text which will be shared on WhatsApp is: "Hello Friends, Sharing some data here... !"
-        
-        if UIApplication.shared.canOpenURL(url! as URL) {
-            UIApplication.shared.openURL(url! as URL)
-        }
+    @IBAction func markAsFavourite(_ sender: Any) {
+        contentDetailPresenter.markAsFavourite(movie: selectedContent)
+    }
+    
+    func shareContent() {
+        contentDetailPresenter.shareContent(id: String(selectedContent.id!))
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
@@ -50,5 +56,12 @@ class ContentDetailViewController : UIViewController {
         label.sizeToFit()
         
         return label.frame.height
+    }
+}
+
+extension ContentDetailViewController : ContentDetailView {
+    
+    func showSuccessFavMessage() {
+        MessageHandler.showMessage(title: "❤️", body: "Agregada a favoritos!", type: messageType.SUCCESS)
     }
 }
