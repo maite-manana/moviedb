@@ -21,6 +21,8 @@
 		B081F7471F02C4D5009124FC /* UILoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F7461F02C4D5009124FC /* UILoadingView.swift */; };
 		B081F74E1F02FBFF009124FC /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B081F74D1F02FBFF009124FC /* GenreCell.swift */; };
 		B081F7531F030F55009124FC /* GenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B081F7521F030F55009124FC /* GenreCell.xib */; };
+		B09D409B1F04409500F2A546 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D409A1F04409500F2A546 /* Router.swift */; };
+		B09D409D1F0440F100F2A546 /* MoviesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D409C1F0440F100F2A546 /* MoviesRouter.swift */; };
 		B09E91E31F04107400757ED0 /* RandomChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09E91E21F04107400757ED0 /* RandomChooserView.swift */; };
 		B09E91E51F0410B300757ED0 /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09E91E41F0410B300757ED0 /* ContentDetailView.swift */; };
 		B09E91E71F0410D400757ED0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09E91E61F0410D400757ED0 /* HomeView.swift */; };
@@ -75,6 +77,8 @@
 		B081F7461F02C4D5009124FC /* UILoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoadingView.swift; sourceTree = "<group>"; };
 		B081F74D1F02FBFF009124FC /* GenreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		B081F7521F030F55009124FC /* GenreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreCell.xib; sourceTree = "<group>"; };
+		B09D409A1F04409500F2A546 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B09D409C1F0440F100F2A546 /* MoviesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesRouter.swift; sourceTree = "<group>"; };
 		B09E91E21F04107400757ED0 /* RandomChooserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomChooserView.swift; sourceTree = "<group>"; };
 		B09E91E41F0410B300757ED0 /* ContentDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		B09E91E61F0410D400757ED0 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,15 @@
 				B081F73F1F02BCFF009124FC /* GenreReport.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B09D40991F04406200F2A546 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				B09D409A1F04409500F2A546 /* Router.swift */,
+				B09D409C1F0440F100F2A546 /* MoviesRouter.swift */,
+			);
+			name = Routers;
 			sourceTree = "<group>";
 		};
 		B09E91DE1F040E2A00757ED0 /* ViewControllers */ = {
@@ -277,6 +290,7 @@
 		E55317EB1EF9AD5800CEEFD6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B09D40991F04406200F2A546 /* Routers */,
 				B07FCAC61EFF000F00484344 /* ApiManager.swift */,
 			);
 			name = Services;
@@ -483,6 +497,7 @@
 			files = (
 				B0C5AFC11F03EA7200132D45 /* MovieChooserViewController.swift in Sources */,
 				B09E91E51F0410B300757ED0 /* ContentDetailView.swift in Sources */,
+				B09D409B1F04409500F2A546 /* Router.swift in Sources */,
 				B081F7431F02BF46009124FC /* RandomChooserViewController.swift in Sources */,
 				E53526A21EF1C33300AE911A /* AppDelegate.swift in Sources */,
 				E5B0C2581F01BF86008B5E46 /* ContentCell.swift in Sources */,
@@ -501,6 +516,7 @@
 				B07FCAD31EFF199600484344 /* ContentDetailViewController.swift in Sources */,
 				B081F73E1F02BC25009124FC /* Genre.swift in Sources */,
 				B081F73A1F029096009124FC /* Video.swift in Sources */,
+				B09D409D1F0440F100F2A546 /* MoviesRouter.swift in Sources */,
 				B081F7381F028C29009124FC /* ContentDetailPresenter.swift in Sources */,
 				B09E91E71F0410D400757ED0 /* HomeView.swift in Sources */,
 				B07FCACC1EFF040C00484344 /* BaseResponse.swift in Sources */,

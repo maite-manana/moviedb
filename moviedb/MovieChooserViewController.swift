@@ -26,7 +26,7 @@ class MovieChooserViewController: UIViewController {
         movieTableView.delegate = self
         
         movieChooserPresenter.attachView(self)
-        movieChooserPresenter.getMoviesByGender(genreList: selectedGenre)
+        movieChooserPresenter.getMoviesByGenre(genreList: selectedGenre)
 
         
         let nib = UINib(nibName: "ContentCell", bundle: nil)

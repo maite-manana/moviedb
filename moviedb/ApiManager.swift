@@ -83,7 +83,7 @@ class APIManager: NSObject {
         
     }
     
-    func getMoviesWithGender(genresList: [String], completionHandler: @escaping (BaseResponse) -> Void) {
+    func getMoviesWithGenre(genresList: [String], completionHandler: @escaping (BaseResponse) -> Void) {
         let params: Parameters = [
             "api_key": Constants.APIConstants.kApiKey,
             "with_genres": genresList.joined(separator: ",")
@@ -97,6 +97,22 @@ class APIManager: NSObject {
                 let responseMovie = response.result.value!
                 completionHandler(responseMovie)
             })
+    }
+    
+    func findMovieByName(movieName: String, completionHandler: @escaping (BaseResponse) -> Void) {
+        let params: Parameters = [
+            "api_key": Constants.APIConstants.kApiKey,
+            "query": movieName
+        ]
+        
+        Alamofire.request(
+            Constants.APIConstants.kBaseURL + "/search/movie",
+            method: .get,
+            parameters: params
+            ).responseObject(completionHandler: { (response: DataResponse<BaseResponse>) -> Void in
+                let responseMovie = response.result.value!
+                completionHandler(responseMovie)
+        })
     }
     
     

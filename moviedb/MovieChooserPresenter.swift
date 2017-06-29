@@ -21,10 +21,10 @@ class MovieChooserPresenter {
         movieChooserView = nil
     }
     
-    func getMoviesByGender(genreList: [String]) {
+    func getMoviesByGenre(genreList: [String]) {
         movieChooserView?.startLoading()
         
-        APIManager.sharedInstance.getMoviesWithGender(genresList: genreList, completionHandler: { (baseResponse) in
+        APIManager.sharedInstance.getMoviesWithGenre(genresList: genreList, completionHandler: { (baseResponse) in
             self.movieChooserView?.finishLoading()
             
             var movies = [Movie]()
