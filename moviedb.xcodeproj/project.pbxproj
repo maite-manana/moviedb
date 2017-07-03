@@ -37,6 +37,11 @@
 		B0C5AFC11F03EA7200132D45 /* MovieChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5AFC01F03EA7200132D45 /* MovieChooserViewController.swift */; };
 		B0C5AFC31F03EA8C00132D45 /* MovieChooserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5AFC21F03EA8C00132D45 /* MovieChooserPresenter.swift */; };
 		D14112EAA02E87CA15353723 /* Pods_moviedb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F213F07A917D842A359E5BE /* Pods_moviedb.framework */; };
+		E530EE6F1F0AC07C00FAE56C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E530EE6E1F0AC07C00FAE56C /* CoreData.framework */; };
+		E530EE751F0AC21600FAE56C /* moviedb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E530EE731F0AC21600FAE56C /* moviedb.xcdatamodeld */; };
+		E530EE771F0ACF7A00FAE56C /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E530EE761F0ACF7A00FAE56C /* FavViewController.swift */; };
+		E530EE791F0ACFC900FAE56C /* FavPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E530EE781F0ACFC900FAE56C /* FavPresenter.swift */; };
+		E530EE7B1F0AD3A300FAE56C /* FavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E530EE7A1F0AD3A300FAE56C /* FavView.swift */; };
 		E53526A21EF1C33300AE911A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53526A11EF1C33300AE911A /* AppDelegate.swift */; };
 		E53526A71EF1C33300AE911A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53526A51EF1C33300AE911A /* Main.storyboard */; };
 		E53526A91EF1C33300AE911A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53526A81EF1C33300AE911A /* Assets.xcassets */; };
@@ -100,6 +105,11 @@
 		B0C5AFC01F03EA7200132D45 /* MovieChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieChooserViewController.swift; sourceTree = "<group>"; };
 		B0C5AFC21F03EA8C00132D45 /* MovieChooserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieChooserPresenter.swift; sourceTree = "<group>"; };
 		B68F6D8F731C3D655A610BF2 /* Pods-moviedb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviedb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moviedb/Pods-moviedb.debug.xcconfig"; sourceTree = "<group>"; };
+		E530EE6E1F0AC07C00FAE56C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = moviedb.xcdatamodel; sourceTree = "<group>"; };
+		E530EE761F0ACF7A00FAE56C /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
+		E530EE781F0ACFC900FAE56C /* FavPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavPresenter.swift; sourceTree = "<group>"; };
+		E530EE7A1F0AD3A300FAE56C /* FavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavView.swift; sourceTree = "<group>"; };
 		E535269E1EF1C33300AE911A /* moviedb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moviedb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53526A11EF1C33300AE911A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E53526A61EF1C33300AE911A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E530EE6F1F0AC07C00FAE56C /* CoreData.framework in Frameworks */,
 				D14112EAA02E87CA15353723 /* Pods_moviedb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +196,7 @@
 				B07FCAD21EFF199600484344 /* ContentDetailViewController.swift */,
 				E555FB631EF1CA9700016D0F /* HomeViewController.swift */,
 				B081F7421F02BF46009124FC /* RandomChooserViewController.swift */,
+				E530EE761F0ACF7A00FAE56C /* FavViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 				B081F7371F028C29009124FC /* ContentDetailPresenter.swift */,
 				E55317ED1EF9ADDC00CEEFD6 /* HomePresenter.swift */,
 				B0C5AFC21F03EA8C00132D45 /* MovieChooserPresenter.swift */,
+				E530EE781F0ACFC900FAE56C /* FavPresenter.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -216,6 +229,7 @@
 				B09E91E41F0410B300757ED0 /* ContentDetailView.swift */,
 				B09E91E61F0410D400757ED0 /* HomeView.swift */,
 				B09E91E81F0410E900757ED0 /* MovieChooserView.swift */,
+				E530EE7A1F0AD3A300FAE56C /* FavView.swift */,
 			);
 			name = ProtocolViews;
 			sourceTree = "<group>";
@@ -232,6 +246,7 @@
 		E1148863286DA27AD1E325E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E530EE6E1F0AC07C00FAE56C /* CoreData.framework */,
 				6F213F07A917D842A359E5BE /* Pods_moviedb.framework */,
 			);
 			name = Frameworks;
@@ -300,6 +315,7 @@
 				E53526A81EF1C33300AE911A /* Assets.xcassets */,
 				E53526AA1EF1C33300AE911A /* LaunchScreen.storyboard */,
 				E53526AD1EF1C33300AE911A /* Info.plist */,
+				E530EE731F0AC21600FAE56C /* moviedb.xcdatamodeld */,
 			);
 			name = "Supporting files";
 			sourceTree = "<group>";
@@ -530,6 +546,7 @@
 				B0194E491F084008001FDB19 /* ShareUtils.swift in Sources */,
 				E555FB671EF1CDD400016D0F /* MessageHandler.swift in Sources */,
 				B07FCAD01EFF04D700484344 /* Movie.swift in Sources */,
+				E530EE791F0ACFC900FAE56C /* FavPresenter.swift in Sources */,
 				B0C5AFC31F03EA8C00132D45 /* MovieChooserPresenter.swift in Sources */,
 				B0194E411F06EC9A001FDB19 /* RouterManager.swift in Sources */,
 				E555FB641EF1CA9700016D0F /* HomeViewController.swift in Sources */,
@@ -538,6 +555,8 @@
 				E55317EE1EF9ADDC00CEEFD6 /* HomePresenter.swift in Sources */,
 				B07FCAC91EFF00AB00484344 /* Constants.swift in Sources */,
 				B081F7401F02BCFF009124FC /* GenreReport.swift in Sources */,
+				E530EE751F0AC21600FAE56C /* moviedb.xcdatamodeld in Sources */,
+				E530EE771F0ACF7A00FAE56C /* FavViewController.swift in Sources */,
 				B07FCAC71EFF001000484344 /* ApiManager.swift in Sources */,
 				B07FCAD31EFF199600484344 /* ContentDetailViewController.swift in Sources */,
 				B081F73E1F02BC25009124FC /* Genre.swift in Sources */,
@@ -545,6 +564,7 @@
 				B09D409D1F0440F100F2A546 /* MoviesRouter.swift in Sources */,
 				B0194E3F1F06EC78001FDB19 /* BaseRouterManager.swift in Sources */,
 				B081F7381F028C29009124FC /* ContentDetailPresenter.swift in Sources */,
+				E530EE7B1F0AD3A300FAE56C /* FavView.swift in Sources */,
 				B0194E471F08375F001FDB19 /* ApiManagerGenreExtension.swift in Sources */,
 				B09E91E71F0410D400757ED0 /* HomeView.swift in Sources */,
 				B07FCACC1EFF040C00484344 /* BaseResponse.swift in Sources */,
@@ -818,6 +838,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E530EE731F0AC21600FAE56C /* moviedb.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */,
+			);
+			currentVersion = E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */;
+			path = moviedb.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E53526961EF1C33300AE911A /* Project object */;
 }

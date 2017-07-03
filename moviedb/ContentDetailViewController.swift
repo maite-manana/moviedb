@@ -13,7 +13,7 @@ class ContentDetailViewController : UIViewController {
     
     fileprivate var contentDetailPresenter = ContentDetailPresenter()
     
-    var selectedContent = Movie()
+    var selectedContent: Movie!
     
     @IBOutlet weak var contentDescription: UILabel!
     

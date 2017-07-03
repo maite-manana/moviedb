@@ -8,9 +8,11 @@
 
 import Foundation
 import ObjectMapper
+import CoreData
 
 class HomePresenter {
   fileprivate var homeView: HomeView?
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
   func attachView(_ view:HomeView) {
     homeView = view
@@ -38,6 +40,18 @@ class HomePresenter {
   
   func shareAction(id: String) {
     getContentVideo(id: id)
+  }
+    
+  func addFav(title: String) {
+    let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into: self.context) as! Movie
+    fav.title = title
+    
+    do {
+        try context.save()
+        MessageHandler.showMessage(title: "❤️", body: "La película se ha agregado a favoritos", type: messageType.SUCCESS)
+    } catch {
+        MessageHandler.showMessage(title: "Ha ocurrido un error", body: "No se ha podido agregar la película a favoritos", type: messageType.ERROR)
+    }
   }
   
   func getContentVideo(id: String) {

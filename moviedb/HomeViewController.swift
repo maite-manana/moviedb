@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     fileprivate var homePresenter = HomePresenter()
     
     var contentList: ArraySlice<Movie> = []
-    var selectedItem = Movie()
+    var selectedItem: Movie!
     var searchController = UISearchController()
 
     override func viewDidLoad() {
@@ -75,6 +75,8 @@ extension HomeViewController: UITableViewDataSource {
     more.backgroundColor = .lightGray
     
     let favorite = UITableViewRowAction(style: .normal, title: "Fav") { action, index in
+        let title = self.contentList[indexPath.row].title!
+        self.homePresenter.addFav(title: title)
     }
     favorite.backgroundColor = .orange
     
