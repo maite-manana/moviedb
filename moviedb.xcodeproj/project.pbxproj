@@ -53,6 +53,8 @@
 		E555FB671EF1CDD400016D0F /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555FB661EF1CDD400016D0F /* MessageHandler.swift */; };
 		E5B0C2561F01BED7008B5E46 /* ContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B0C2551F01BED7008B5E46 /* ContentCell.xib */; };
 		E5B0C2581F01BF86008B5E46 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0C2571F01BF86008B5E46 /* ContentCell.swift */; };
+		E5F38A371F0B04B7006A2272 /* FavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F38A351F0B04B7006A2272 /* FavCell.swift */; };
+		E5F38A381F0B04B7006A2272 /* FavCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F38A361F0B04B7006A2272 /* FavCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		E555FB661EF1CDD400016D0F /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		E5B0C2551F01BED7008B5E46 /* ContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCell.xib; sourceTree = "<group>"; };
 		E5B0C2571F01BF86008B5E46 /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		E5F38A351F0B04B7006A2272 /* FavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
+		E5F38A361F0B04B7006A2272 /* FavCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 			children = (
 				E5B0C2571F01BF86008B5E46 /* ContentCell.swift */,
 				B081F74D1F02FBFF009124FC /* GenreCell.swift */,
+				E5F38A351F0B04B7006A2272 /* FavCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				E5B0C2551F01BED7008B5E46 /* ContentCell.xib */,
 				E555FB661EF1CDD400016D0F /* MessageHandler.swift */,
 				B081F7461F02C4D5009124FC /* UILoadingView.swift */,
+				E5F38A361F0B04B7006A2272 /* FavCell.xib */,
 				B081F7521F030F55009124FC /* GenreCell.xib */,
 				B02734811F0697B7009020EF /* ImageViewUtils.swift */,
 				B0194E481F084008001FDB19 /* ShareUtils.swift */,
@@ -456,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E53526AC1EF1C33300AE911A /* LaunchScreen.storyboard in Resources */,
+				E5F38A381F0B04B7006A2272 /* FavCell.xib in Resources */,
 				E53526A91EF1C33300AE911A /* Assets.xcassets in Resources */,
 				E53526A71EF1C33300AE911A /* Main.storyboard in Resources */,
 				E5B0C2561F01BED7008B5E46 /* ContentCell.xib in Resources */,
@@ -565,6 +572,7 @@
 				B0194E3F1F06EC78001FDB19 /* BaseRouterManager.swift in Sources */,
 				B081F7381F028C29009124FC /* ContentDetailPresenter.swift in Sources */,
 				E530EE7B1F0AD3A300FAE56C /* FavView.swift in Sources */,
+				E5F38A371F0B04B7006A2272 /* FavCell.swift in Sources */,
 				B0194E471F08375F001FDB19 /* ApiManagerGenreExtension.swift in Sources */,
 				B09E91E71F0410D400757ED0 /* HomeView.swift in Sources */,
 				B07FCACC1EFF040C00484344 /* BaseResponse.swift in Sources */,

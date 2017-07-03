@@ -18,9 +18,15 @@ class FavViewController: UIViewController {
     @IBOutlet weak var favTableView: UITableView!
     
     override func viewDidLoad() {
+        favTableView.dataSource = self
+        favTableView.delegate = self
+        
         loadingView.setupLoadingIndicator()
         favPresenter.attachView(self)
         favPresenter.getContent()
+        
+        let nib = UINib(nibName: "FavCell", bundle: nil)
+        self.favTableView.register(nib, forCellReuseIdentifier: "cell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +42,13 @@ extension FavViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
-        cell.title.text = favList[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! FavCell
+        cell.configure(fav: favList[indexPath.row])
         return cell
     }
 }
+
+extension FavViewController: UITableViewDelegate {}
 
 extension FavViewController: FavView {
 
@@ -60,3 +68,5 @@ extension FavViewController: FavView {
     func setEmptyContent() {
     }
 }
+
+
