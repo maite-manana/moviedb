@@ -46,7 +46,7 @@ extension RandomChooserViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellGenre") as! GenreCell
-        cell.genreLabel.text = genresList[indexPath.row].name
+        cell.configure(genre: genresList[indexPath.row])
         return cell
     }
     
@@ -65,7 +65,7 @@ extension RandomChooserViewController : UITableViewDataSource {
         let movieChooserViewController = segue.destination as! MovieChooserViewController
         movieChooserViewController.selectedGenre = genreSelected
     }
-    
+  
 }
 
 extension RandomChooserViewController : UITableViewDelegate {

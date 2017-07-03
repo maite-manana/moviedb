@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,39 +15,30 @@
             <rect key="frame" x="0.0" y="0.0" width="455" height="83"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UOh-jq-K28" id="eq2-2f-GVx" customClass="GenreCell" customModule="moviedb" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="455" height="82.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="455" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFg-95-EY5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFg-95-EY5">
                         <rect key="frame" x="8" y="7" width="92.5" height="67.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-DH-Ojb">
-                        <rect key="frame" x="120.5" y="30" width="42" height="21"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-DH-Ojb">
+                        <rect key="frame" x="397" y="30" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="n4q-DH-Ojb" firstAttribute="leading" secondItem="AFg-95-EY5" secondAttribute="trailing" constant="20" id="j6W-Rm-C4N"/>
-                </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstItem="n4q-DH-Ojb" firstAttribute="top" secondItem="UOh-jq-K28" secondAttribute="topMargin" constant="19" id="64B-yH-t75"/>
-                <constraint firstItem="AFg-95-EY5" firstAttribute="top" secondItem="UOh-jq-K28" secondAttribute="topMargin" constant="-4" id="6Bj-Hm-6gX"/>
-                <constraint firstItem="AFg-95-EY5" firstAttribute="leading" secondItem="UOh-jq-K28" secondAttribute="leading" constant="8" id="8NN-RW-thm"/>
-                <constraint firstAttribute="bottomMargin" secondItem="AFg-95-EY5" secondAttribute="bottom" constant="-2.5" id="DS8-w4-jBq"/>
-                <constraint firstAttribute="trailing" secondItem="AFg-95-EY5" secondAttribute="trailing" constant="354.5" id="e7a-km-25w"/>
-                <constraint firstAttribute="bottomMargin" secondItem="n4q-DH-Ojb" secondAttribute="bottom" constant="21" id="hV4-eJ-Ahr"/>
-            </constraints>
             <connections>
                 <outlet property="checked" destination="n4q-DH-Ojb" id="zYw-GO-X9F"/>
                 <outlet property="genreLabel" destination="AFg-95-EY5" id="w68-2j-asG"/>
             </connections>
-            <point key="canvasLocation" x="-422" y="-594"/>
+            <point key="canvasLocation" x="-537.5" y="-1060.5"/>
         </tableViewCell>
     </objects>
 </document>

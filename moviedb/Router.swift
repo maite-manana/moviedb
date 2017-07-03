@@ -11,7 +11,9 @@ import Alamofire
 
 protocol Router {
     
-    var params: Dictionary<String, AnyObject>? { get }
+  var params: Dictionary<String, AnyObject>? { get }
     
-    var path: String { get }
+  var path: String { get }
+  
+  var method: Alamofire.HTTPMethod { get }
 }

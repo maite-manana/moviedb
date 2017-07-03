@@ -24,9 +24,9 @@ class RandomChooserPresenter {
     func getGenres() {
         randomChooserView?.startLoading()
 
-        APIManager.sharedInstance.getGenre(completionHandler: {(genreReport) in
+        APIManager.sharedInstance.getGenreList(completionHandler: {(genreReport) in
             self.randomChooserView?.finishLoading()
-            self.randomChooserView?.setGenres(genreList: genreReport.genres!)
+            self.randomChooserView?.setGenres(genreList: (genreReport?.genres!)!)
         })
     }
 }

@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 
 class GenreCell: UITableViewCell {
-    
-    @IBOutlet weak var checked: UILabel!
-    @IBOutlet weak var genreLabel: UILabel!
+  
+  @IBOutlet weak var checked: UILabel!
+  @IBOutlet weak var genreLabel: UILabel!
+  
+  func configure(genre: Genre) {
+    self.genreLabel.text = genre.name
+  }
 }

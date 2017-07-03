@@ -8,22 +8,48 @@
 
 import Foundation
 import Alamofire
-import ObjectMapper
 
 enum MoviesRouter: Router {
-    case GetMoviesNowPlaying()
+  case GetMoviesNowPlaying()
+  case GatVideos(movieId: String)
+  case SearchMovie(movieName: String)
+  case GetSeries()
+  case GetMoviesWithGenre(genresList: [String])
+  
+  var params: Dictionary<String, AnyObject>? {
+    switch self {
+    case .GetMoviesNowPlaying(), .GatVideos(_), .GetSeries():
+      return ["api_key" : Constants.APIConstants.kApiKey as AnyObject]
     
-    var params: Dictionary<String, AnyObject>? {
-        switch self {
-        case .GetMoviesNowPlaying():
-            return ["api_key" : Constants.APIConstants.kApiKey as AnyObject]
-        }
+    case .SearchMovie(let movieName):
+      let parameters : Dictionary<String, AnyObject> = [
+        "api_key" :  Constants.APIConstants.kApiKey as AnyObject,
+        "query" : movieName as AnyObject]
+      return parameters
+    case .GetMoviesWithGenre(let genresList):
+      let parameters : Dictionary<String, AnyObject> = [
+        "api_key" :  Constants.APIConstants.kApiKey as AnyObject,
+        "with_genres" : genresList.joined(separator: ",") as AnyObject]
+      return parameters
     }
-
-    var path: String {
-        switch self {
-        case .GetMoviesNowPlaying():
-            return "/movie/now_playing"
-        }
+  }
+  
+  var path: String {
+    switch self {
+    case .GetMoviesNowPlaying():
+      return "/movie/now_playing"
+    case .GatVideos(let id):
+      return "/movie/\(id)/videos"
+    case .SearchMovie(_):
+      return "/search/movie"
+    case .GetSeries():
+      return "/discover/tv"
+    case .GetMoviesWithGenre(_):
+      return "/discover/movie"
     }
+  }
+  
+  var method: Alamofire.HTTPMethod {
+    return .get
+  }
 }

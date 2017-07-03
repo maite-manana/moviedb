@@ -21,32 +21,29 @@ class ContentDetailPresenter {
     }
     
     func getContentVideo(id: String) {
-        APIManager.sharedInstance.getVideo(id: id, completionHandler: {
-            (baseResponse) in
-            var videos = [Video]()
-            let coversResponse = baseResponse.results as! Array<NSDictionary>
-            videos = coversResponse.map({ (responseDictionary) -> Video in
-                Mapper<Video>().map(JSONObject: responseDictionary)!
-            })
-            self.shareContent(videos: videos)
-        });
+      APIManager.sharedInstance.getVideos(movieId: id, completionHandler: {
+        (baseResponse) in
+        var videos = [Video]()
+        let coversResponse = baseResponse?.results as! Array<NSDictionary>
+        videos = coversResponse.map({ (responseDictionary) -> Video in
+          Mapper<Video>().map(JSONObject: responseDictionary)!
+        })
+        self.shareContent(videos: videos)
+      });
     }
     
     func shareContent(id: String) {
         getContentVideo(id: id)
     }
     
-    func shareContent(videos: [Video]) {
-        let videoUrl = videos.count > 0 ? Constants.APIConstants.kBaseYouTube + videos[0].key! : ""
-        let urlString = "Sending WhatsApp message through app in Swift." + videoUrl
-        let urlwithPercentEscapes = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let url  = NSURL(string: "whatsapp://send?text=\(urlwithPercentEscapes!)")
-        
-        if UIApplication.shared.canOpenURL(url! as URL) {
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-        }
-    }
+  func shareContent(videos: [Video]) {
+    let url = ShareUtils.shareWhatsApp(videos: videos)
     
+    if UIApplication.shared.canOpenURL(url as URL) {
+      UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+    }
+  }
+  
     func markAsFavourite(movie: Movie) {
         //Hay que obtener el array y agregar una nueva peli, asi agrega solo una
         

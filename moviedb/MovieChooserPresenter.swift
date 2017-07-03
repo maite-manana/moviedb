@@ -28,7 +28,7 @@ class MovieChooserPresenter {
             self.movieChooserView?.finishLoading()
             
             var movies = [Movie]()
-            let coversResponse = baseResponse.results as! Array<NSDictionary>
+            let coversResponse = baseResponse?.results as! Array<NSDictionary>
             movies = coversResponse.map({ (responseDictionary) -> Movie in
                 Mapper<Movie>().map(JSONObject: responseDictionary)!
             })

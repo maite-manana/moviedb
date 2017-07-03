@@ -49,14 +49,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.title.text = contentList[indexPath.row].title
-        cell.additionalData.text = contentList[indexPath.row].overview
-        let url = URL(string: Constants.APIConstants.kBaseImageURL + contentList[indexPath.row].posterPath!)
-        let data = try? Data(contentsOf: url!)
-        cell.poster.image = UIImage(data: data!)
-        
+        cell.configure(movie: contentList[indexPath.row])
         return cell
     }
     
@@ -74,6 +67,29 @@ extension HomeViewController: UITableViewDataSource {
     {
         return 165.0
     }
+  
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
+      self.moreActionSwipe()
+    }
+    more.backgroundColor = .lightGray
+    
+    let favorite = UITableViewRowAction(style: .normal, title: "Fav") { action, index in
+    }
+    favorite.backgroundColor = .orange
+    
+    let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+      let id = String(self.contentList[indexPath.row].id!)
+      self.homePresenter.shareAction(id: id)
+    }
+    share.backgroundColor = .blue
+    
+    return [share, favorite, more]
+  }
+  
+  func moreActionSwipe() {
+    MessageHandler.showMessage(title: "probando", body: "hola", type: messageType.WARNING)
+  }
 }
 
 extension HomeViewController: UITableViewDelegate {}
