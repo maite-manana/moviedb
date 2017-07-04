@@ -13,5 +13,4 @@ protocol FavView {
     func startLoading()
     func finishLoading()
     func setContent(favsList: [Fav])
-    func setEmptyContent()
 }

@@ -25,13 +25,14 @@ class FavPresenter {
     }
     
     func getContent() {
+      favView?.startLoading()
         let favsfetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Fav")
         do {
             favs = try context.fetch(favsfetch) as! [Fav]
         } catch {
             fatalError("Error: \(error)")
         }
-        
-        self.favView?.setContent(favsList: favs)
+        favView?.finishLoading()
+        favView?.setContent(favsList: favs)
     }
 }

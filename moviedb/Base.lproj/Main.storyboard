@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Random-->
         <scene sceneID="D2t-32-6Zg">
             <objects>
                 <viewController id="gwc-5P-53n" customClass="RandomChooserViewController" customModule="moviedb" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="pWx-jO-gf3"/>
-                    <navigationItem key="navigationItem" id="Tzz-np-sbd"/>
+                    <navigationItem key="navigationItem" title="Random" id="Tzz-np-sbd"/>
                     <connections>
                         <outlet property="genresTableView" destination="1mL-vJ-ht3" id="rS7-GU-ea3"/>
                         <segue destination="I4l-vc-xgC" kind="show" identifier="movieChooserList" id="krp-Sy-vXf"/>
@@ -67,10 +67,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-20-qh2" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
+                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Q4l-UV-2RE"/>
+                                    <constraint firstAttribute="height" constant="80" id="uuk-97-Mhb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eeC-20-qh2" firstAttribute="centerX" secondItem="EPZ-X7-Zhn" secondAttribute="centerX" id="MKx-jl-awr"/>
+                            <constraint firstItem="eeC-20-qh2" firstAttribute="centerY" secondItem="EPZ-X7-Zhn" secondAttribute="centerY" id="Tqd-AV-Qkz"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingView" destination="eeC-20-qh2" id="RbM-k5-rFG"/>
                         <outlet property="movieTableView" destination="MdS-u3-EuR" id="cQu-7M-pUX"/>
                     </connections>
                 </viewController>
@@ -78,11 +91,11 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="393.55322338830587"/>
         </scene>
-        <!--Item-->
+        <!--Random-->
         <scene sceneID="7KM-59-fLw">
             <objects>
                 <navigationController id="k9h-ZM-225" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="BYk-HW-az6"/>
+                    <tabBarItem key="tabBarItem" title="Random" image="search" selectedImage="search" id="BYk-HW-az6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PND-qG-LyY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +138,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-IT-EfP">
                                 <rect key="frame" x="296" y="389" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Image"/>
+                                <state key="normal" image="heart"/>
                                 <connections>
                                     <action selector="markAsFavourite:" destination="pEk-ke-61a" eventType="touchUpInside" id="X3e-1W-Ohp"/>
                                 </connections>
@@ -158,7 +171,7 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="-266.71664167916043"/>
         </scene>
-        <!--Fav View Controller-->
+        <!--Favoritos-->
         <scene sceneID="qIu-xE-ZZ8">
             <objects>
                 <viewController id="sno-Te-KRb" customClass="FavViewController" customModule="moviedb" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +188,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egO-rN-V1O" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egO-rN-V1O" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
                                 <rect key="frame" x="147" y="293" width="80" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -190,7 +203,7 @@
                             <constraint firstItem="egO-rN-V1O" firstAttribute="centerY" secondItem="He2-5o-iNB" secondAttribute="centerY" id="FgI-D6-rAf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="T4n-6Z-Uny"/>
+                    <navigationItem key="navigationItem" title="Favoritos" id="T4n-6Z-Uny"/>
                     <connections>
                         <outlet property="favTableView" destination="OXC-rb-oyU" id="eAX-Lk-YIS"/>
                         <outlet property="loadingView" destination="egO-rN-V1O" id="EdQ-kI-as5"/>
@@ -200,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="175.19999999999999" y="1229.2353823088456"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Inicio-->
         <scene sceneID="06A-hU-54N">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="czy-cG-hQD" customClass="HomeViewController" customModule="moviedb" customModuleProvider="target" sceneMemberID="viewController">
@@ -217,7 +230,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZu-wP-UlW" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZu-wP-UlW" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
                                 <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -232,7 +245,7 @@
                             <constraint firstItem="RZu-wP-UlW" firstAttribute="centerY" secondItem="6hC-Uo-R7J" secondAttribute="centerY" id="qgc-Us-5af"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hUJ-Vn-uhO"/>
+                    <navigationItem key="navigationItem" title="Inicio" id="hUJ-Vn-uhO"/>
                     <connections>
                         <outlet property="loadingView" destination="RZu-wP-UlW" id="7hb-ej-X2l"/>
                         <outlet property="moviesTableView" destination="LXX-YQ-l1W" id="3ml-5Q-Sdh"/>
@@ -279,11 +292,11 @@
             </objects>
             <point key="canvasLocation" x="-1932" y="395"/>
         </scene>
-        <!--Item 1-->
+        <!--Inicio-->
         <scene sceneID="BNf-3Y-44z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2T5-ul-XLj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="8Bc-bm-gbz"/>
+                    <tabBarItem key="tabBarItem" title="Inicio" image="home" selectedImage="home" id="8Bc-bm-gbz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EP8-CJ-BGx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -302,11 +315,11 @@
             </objects>
             <point key="canvasLocation" x="-764" y="-265.81709145427288"/>
         </scene>
-        <!--Item-->
+        <!--Favoritos-->
         <scene sceneID="0cX-Ql-9za">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6sg-gI-8mB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qfJ-hw-Yv1"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="heart" selectedImage="heart" id="qfJ-hw-Yv1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="05E-Mn-ExJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -323,6 +336,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="24" height="24"/>
+        <image name="heart" width="24" height="24"/>
+        <image name="home" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
     </resources>
 </document>

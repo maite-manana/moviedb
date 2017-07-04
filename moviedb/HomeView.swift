@@ -9,8 +9,9 @@
 import Foundation
 
 protocol HomeView {
-    func startLoading()
-    func finishLoading()
-    func setContent(moviesList: [Movie])
-    func setEmptyContent()
+  func startLoading()
+  func finishLoading()
+  func setContent(moviesList: [Movie])
+  func showSuccessFavMessage()
+  func showErrorFavMessage()
 }
