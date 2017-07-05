@@ -13,13 +13,13 @@ class ContentCell: UITableViewCell {
     
   @IBOutlet weak var poster: UIImageView!
   @IBOutlet weak var title: UILabel!
-  @IBOutlet weak var additionalData: UILabel?
-  @IBOutlet weak var backgroundCardView: UIView?
+  @IBOutlet weak var additionalData: UILabel!
+  @IBOutlet weak var backgroundCardView: UIView!
   
   func configure(movie: Movie) {
     self.selectionStyle = UITableViewCellSelectionStyle.none
     self.title.text = movie.title
-    self.additionalData?.text = movie.overview
+    self.additionalData.text = movie.overview
     ImageViewUtils.loadImage(imageURL: movie.posterPath!, imageView: self.poster!)
     setupBackground()
   }

@@ -67,7 +67,8 @@ extension HomeViewController: UITableViewDataSource {
     let favorite = UITableViewRowAction(style: .normal, title: "Fav") { action, index in
       let title = self.contentList[indexPath.row].title!
       let posterPath = self.contentList[indexPath.row].posterPath!
-      self.homePresenter.addFav(title: title, posterPath: posterPath)
+      let overview = self.contentList[indexPath.row].overview!
+      self.homePresenter.addFav(title: title, posterPath: posterPath, overview: overview)
     }
     favorite.backgroundColor = Constants.Colors.kBlueSoft
     

@@ -42,10 +42,11 @@ class HomePresenter {
     getContentVideo(id: id)
   }
   
-  func addFav(title: String, posterPath: String) {
+  func addFav(title: String, posterPath: String, overview: String) {
     let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into: self.context) as! Fav
     fav.title = title
     fav.posterPath = posterPath
+    fav.overview = overview
     
     do {
       try context.save()

@@ -21,6 +21,8 @@ class ContentDetailViewController : UIViewController {
   
   @IBOutlet weak var contentImage: UIImageView!
   
+  @IBOutlet weak var favButton: UIButton!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     

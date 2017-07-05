@@ -50,6 +50,10 @@ extension FavViewController: UITableViewDataSource {
     let nib = UINib(nibName: "FavCell", bundle: nil)
     self.favTableView.register(nib, forCellReuseIdentifier: "cell")
   }
+    
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 165.0
+  }
 }
 
 extension FavViewController: UITableViewDelegate {}
