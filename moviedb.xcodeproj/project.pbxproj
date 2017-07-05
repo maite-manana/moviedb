@@ -127,6 +127,7 @@
 		E55317ED1EF9ADDC00CEEFD6 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		E555FB631EF1CA9700016D0F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E555FB661EF1CDD400016D0F /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
+		E58855751F0C888500C252A4 /* moviedb 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "moviedb 2.xcdatamodel"; sourceTree = "<group>"; };
 		E5B0C2551F01BED7008B5E46 /* ContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCell.xib; sourceTree = "<group>"; };
 		E5B0C2571F01BF86008B5E46 /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		E5F38A351F0B04B7006A2272 /* FavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
@@ -851,9 +852,10 @@
 		E530EE731F0AC21600FAE56C /* moviedb.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E58855751F0C888500C252A4 /* moviedb 2.xcdatamodel */,
 				E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */,
 			);
-			currentVersion = E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */;
+			currentVersion = E58855751F0C888500C252A4 /* moviedb 2.xcdatamodel */;
 			path = moviedb.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

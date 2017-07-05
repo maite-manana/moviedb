@@ -27,7 +27,9 @@ struct Constants {
   struct Messages {
     static let kGenericErrorMessage = "Ha ocurrido un error"
     static let kFavSuccessMessage = "Agregada a favoritos!"
+    static let kUnfavSuccessMessage = "Eliminada de favoritos!"
     static let kFavErrorMessage = "No se ha podido agregar la película a favoritos"
+    static let kUnfavErrorMessage = "No se ha podido eliminar la película a favoritos"
     static let kNoFilmsZeroState = "No hay películas disponibles"
     static let kNoFavsZeroState = "Todavía no tienes favoritos"
   }

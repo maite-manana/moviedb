@@ -14,4 +14,6 @@ protocol HomeView {
   func setContent(moviesList: [Movie])
   func showSuccessFavMessage()
   func showErrorFavMessage()
+  func showSuccessUnfavMessage()
+  func showErrorUnfavMessage()
 }

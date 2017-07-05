@@ -13,6 +13,8 @@ import CoreData
 class HomePresenter {
   fileprivate var homeView: HomeView?
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  var isFav: Bool!
+  var favElem: [NSManagedObject] = []
   
   func attachView(_ view:HomeView) {
     homeView = view
@@ -41,18 +43,43 @@ class HomePresenter {
   func shareAction(id: String) {
     getContentVideo(id: id)
   }
-  
-  func addFav(title: String, posterPath: String, overview: String) {
-    let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into: self.context) as! Fav
-    fav.title = title
-    fav.posterPath = posterPath
-    fav.overview = overview
     
+  func checkIfFavorite(id: Int) -> Bool {
+    let predicate = NSPredicate(format: "id == %@", id as NSNumber)
+        
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Fav")
+    fetchRequest.predicate = predicate
+        
     do {
-      try context.save()
-      self.homeView?.showSuccessFavMessage()
-    } catch {
-      self.homeView?.showErrorFavMessage()
+        favElem = try context.fetch(fetchRequest) as! [NSManagedObject]
+    } catch {}
+    isFav = !favElem.isEmpty
+    return isFav
+        
+    }
+  
+  func addFav(id: Int, title: String, posterPath: String, overview: String) {
+    if checkIfFavorite(id: id) {
+        context.delete(favElem[0] as NSManagedObject)
+        do {
+            try context.save()
+            homeView?.showSuccessUnfavMessage()
+        } catch {
+            homeView?.showSuccessUnfavMessage()
+        }
+    } else {
+        let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into:self.context) as! Fav
+        fav.id = Int32(id)
+        fav.title = title
+        fav.posterPath = posterPath
+        fav.overview = overview
+        
+        do {
+            try context.save()
+            homeView?.showSuccessFavMessage()
+        } catch {
+            homeView?.showSuccessFavMessage()
+        }
     }
   }
   

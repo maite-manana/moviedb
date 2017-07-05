@@ -13,6 +13,8 @@ import CoreData
 class ContentDetailPresenter {
   fileprivate var contentDetailView: ContentDetailView?
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  var isFav: Bool!
+  var favElem: [NSManagedObject] = []
   
   
   func attachView(_ view: ContentDetailView) {
@@ -46,17 +48,44 @@ class ContentDetailPresenter {
       UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
   }
-  
-  func markAsFavourite(movie: Movie) {
-    let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into:self.context) as! Fav
-    fav.title = movie.title
-    fav.posterPath = movie.posterPath
+    
+  func checkIfFavorite(id: Int) -> Bool {
+    let predicate = NSPredicate(format: "id == %@", id as NSNumber)
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Fav")
+    fetchRequest.predicate = predicate
     
     do {
-      try context.save()
-      contentDetailView?.showSuccessFavMessage()
-    } catch {
-      contentDetailView?.showSuccessFavMessage()
+      favElem = try context.fetch(fetchRequest) as! [NSManagedObject]
+        
+    } catch {}
+    isFav = !favElem.isEmpty
+    return isFav
+    
+  }
+  
+  func markAsFavourite(movie: Movie) {
+    if checkIfFavorite(id: movie.id!) {
+        context.delete(favElem[0] as NSManagedObject)
+        do {
+            try context.save()
+            contentDetailView?.showSuccessUnfavMessage()
+        } catch {
+            contentDetailView?.showSuccessUnfavMessage()
+        }
+    } else {
+        let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into:self.context) as! Fav
+        fav.id = Int32(movie.id!)
+        fav.title = movie.title
+        fav.posterPath = movie.posterPath
+        fav.overview = movie.overview
+        
+        do {
+            try context.save()
+            contentDetailView?.showSuccessFavMessage()
+        } catch {
+            contentDetailView?.showSuccessFavMessage()
+        }
     }
   }
 }

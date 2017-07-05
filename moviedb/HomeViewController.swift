@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
   var contentList: ArraySlice<Movie> = []
   var selectedItem: Movie!
   var searchController = UISearchController()
+  var favActionTitle = "Fav"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -64,11 +65,17 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    let favorite = UITableViewRowAction(style: .normal, title: "Fav") { action, index in
+    let favorite = UITableViewRowAction(style: .normal, title: favActionTitle) { action, index in
+      let id = self.contentList[indexPath.row].id!
       let title = self.contentList[indexPath.row].title!
       let posterPath = self.contentList[indexPath.row].posterPath!
       let overview = self.contentList[indexPath.row].overview!
-      self.homePresenter.addFav(title: title, posterPath: posterPath, overview: overview)
+      self.homePresenter.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
+      if self.favActionTitle == "Fav" {
+        self.favActionTitle = "UnFav"
+      } else {
+        self.favActionTitle = "Fav"
+      }
     }
     favorite.backgroundColor = Constants.Colors.kBlueSoft
     
@@ -132,5 +139,13 @@ extension HomeViewController: HomeView {
   
   func showErrorFavMessage() {
     MessageHandler.showMessage(title: Constants.Messages.kGenericErrorMessage, body: Constants.Messages.kFavErrorMessage, type: messageType.ERROR)
+  }
+    
+  func showSuccessUnfavMessage() {
+    MessageHandler.showMessage(title: "🖤", body: Constants.Messages.kUnfavSuccessMessage, type: messageType.SUCCESS)
+  }
+    
+  func showErrorUnfavMessage() {
+    MessageHandler.showMessage(title: Constants.Messages.kUnfavErrorMessage, body: Constants.Messages.kFavErrorMessage, type: messageType.ERROR)
   }
 }

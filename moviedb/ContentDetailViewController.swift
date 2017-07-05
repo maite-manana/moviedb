@@ -14,6 +14,8 @@ class ContentDetailViewController : UIViewController {
   fileprivate var contentDetailPresenter = ContentDetailPresenter()
   
   var selectedContent: Movie!
+    
+  var fav = false
   
   @IBOutlet weak var contentDescription: UILabel!
   
@@ -37,12 +39,24 @@ class ContentDetailViewController : UIViewController {
     let data = try? Data(contentsOf: url!)
     contentImage.image = UIImage(data: data!)
     
+    setFavButton(favImage: #imageLiteral(resourceName: "heartfill"), notFavImage: #imageLiteral(resourceName: "heart"))
+    
     let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(shareContent))
     self.navigationItem.rightBarButtonItem = shareButton
   }
   
   @IBAction func markAsFavourite(_ sender: Any) {
+    setFavButton(favImage: #imageLiteral(resourceName: "heart"), notFavImage: #imageLiteral(resourceName: "heartfill"))
     contentDetailPresenter.markAsFavourite(movie: selectedContent)
+  }
+    
+    func setFavButton(favImage: UIImage, notFavImage: UIImage) {
+    fav = contentDetailPresenter.checkIfFavorite(id: selectedContent.id!)
+    if fav {
+        favButton.setImage(favImage, for: .normal)
+    } else {
+        favButton.setImage(notFavImage, for: .normal)
+    }
   }
   
   func shareContent() {
@@ -69,5 +83,13 @@ extension ContentDetailViewController : ContentDetailView {
   
   func showErrorFavMessage() {
     MessageHandler.showMessage(title: Constants.Messages.kGenericErrorMessage, body: Constants.Messages.kFavErrorMessage, type: messageType.ERROR)
+  }
+    
+  func showSuccessUnfavMessage() {
+    MessageHandler.showMessage(title: "🖤", body: Constants.Messages.kUnfavSuccessMessage, type: messageType.SUCCESS)
+  }
+    
+  func showErrorUnfavMessage() {
+    MessageHandler.showMessage(title: Constants.Messages.kUnfavErrorMessage, body: Constants.Messages.kFavErrorMessage, type: messageType.ERROR)
   }
 }

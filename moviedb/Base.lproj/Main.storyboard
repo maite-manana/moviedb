@@ -140,7 +140,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="heart"/>
                                 <connections>
-                                    <action selector="markAsFavourite:" destination="pEk-ke-61a" eventType="touchUpInside" id="X3e-1W-Ohp"/>
+                                    <action selector="markAsFavourite:" destination="pEk-ke-61a" eventType="touchUpInside" id="IS0-iZ-E0Y"/>
                                 </connections>
                             </button>
                         </subviews>

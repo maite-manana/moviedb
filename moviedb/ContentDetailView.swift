@@ -11,4 +11,6 @@ import Foundation
 protocol ContentDetailView {
   func showSuccessFavMessage()
   func showErrorFavMessage()
+  func showSuccessUnfavMessage()
+  func showErrorUnfavMessage()
 }
