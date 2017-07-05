@@ -14,22 +14,23 @@ enum MoviesRouter: Router {
   case GatVideos(movieId: String)
   case SearchMovie(movieName: String)
   case GetSeries()
-  case GetMoviesWithGenre(genresList: [String])
+  case GetMoviesWithGenre(genresList: [String], page: Int)
   
   var params: Dictionary<String, AnyObject>? {
     switch self {
     case .GetMoviesNowPlaying(), .GatVideos(_), .GetSeries():
       return ["api_key" : Constants.APIConstants.kApiKey as AnyObject]
-    
+      
     case .SearchMovie(let movieName):
       let parameters : Dictionary<String, AnyObject> = [
         "api_key" :  Constants.APIConstants.kApiKey as AnyObject,
         "query" : movieName as AnyObject]
       return parameters
-    case .GetMoviesWithGenre(let genresList):
+    case .GetMoviesWithGenre(let genresList, let page):
       let parameters : Dictionary<String, AnyObject> = [
         "api_key" :  Constants.APIConstants.kApiKey as AnyObject,
-        "with_genres" : genresList.joined(separator: ",") as AnyObject]
+        "with_genres" : genresList.joined(separator: ",") as AnyObject,
+        "page": page as AnyObject]
       return parameters
     }
   }

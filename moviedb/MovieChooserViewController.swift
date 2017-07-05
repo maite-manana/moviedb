@@ -30,6 +30,14 @@ class MovieChooserViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     movieTableView.tableFooterView = UIView(frame: CGRect.zero)
+    
+    let reloadButton = UIBarButtonItem.init(image: UIImage(named: "reload"), style: .plain, target: self, action: #selector(reloadContent))
+    self.navigationItem.rightBarButtonItem = reloadButton
+
+  }
+  
+  func reloadContent() {
+    movieChooserPresenter.getMoviesByGenre(genreList: selectedGenre)
   }
 }
 
@@ -52,6 +60,7 @@ extension MovieChooserViewController: UITableViewDataSource {
   func setupContentTable() {
     movieTableView.dataSource = self
     movieTableView.delegate = self
+    movieTableView.separatorStyle = .none
     
     let nib = UINib(nibName: "ContentCell", bundle: nil)
     self.movieTableView.register(nib, forCellReuseIdentifier: "cell")
@@ -71,8 +80,8 @@ extension MovieChooserViewController: MovieChooserView {
     loadingView.hideLoadingIndicator()
   }
   
-  func setMovies(movieList: [Movie]) {
-    contentList = movieList[0..<3]
+  func setMovies(movieList: ArraySlice<Movie>) {
+    contentList = movieList
     movieTableView.reloadData()
   }
 }

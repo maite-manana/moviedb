@@ -19,7 +19,6 @@ class FavViewController: UIViewController {
   @IBOutlet weak var favTableView: UITableView!
   
   override func viewDidLoad() {
-    setupEmptyDataSet()
     setupFavTable()
     loadingView.setupLoadingIndicator()
     favPresenter.attachView(self)
@@ -46,7 +45,7 @@ extension FavViewController: UITableViewDataSource {
   func setupFavTable() {
     favTableView.dataSource = self
     favTableView.delegate = self
-    
+    favTableView.separatorStyle = .none
     let nib = UINib(nibName: "FavCell", bundle: nil)
     self.favTableView.register(nib, forCellReuseIdentifier: "cell")
   }
@@ -89,6 +88,7 @@ extension FavViewController: FavView {
   }
   
   func setContent(favsList: [Fav]) {
+    setupEmptyDataSet()
     favList = favsList
     favTableView.reloadData()
   }

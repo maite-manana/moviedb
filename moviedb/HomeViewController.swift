@@ -27,7 +27,6 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     homePresenter.attachView(self)
     loadingView.setupLoadingIndicator()
-    setupEmptyDataSet()
     setupContentTable()
     homePresenter.getContent()
   }
@@ -77,7 +76,7 @@ extension HomeViewController: UITableViewDataSource {
         self.favActionTitle = "Fav"
       }
     }
-    favorite.backgroundColor = Constants.Colors.kBlueSoft
+    favorite.backgroundColor = Constants.Colors.kIndigo
     
     let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
       let id = String(self.contentList[indexPath.row].id!)
@@ -91,7 +90,7 @@ extension HomeViewController: UITableViewDataSource {
   func setupContentTable() {
     moviesTableView.dataSource = self
     moviesTableView.delegate = self
-    
+    moviesTableView.separatorStyle = .none
     let nib = UINib(nibName: "ContentCell", bundle: nil)
     self.moviesTableView.register(nib, forCellReuseIdentifier: "cell")
   }
@@ -129,6 +128,7 @@ extension HomeViewController: HomeView {
   }
   
   func setContent(moviesList: [Movie]) {
+    setupEmptyDataSet()
     contentList = moviesList[0..<5]
     moviesTableView.reloadData()
   }

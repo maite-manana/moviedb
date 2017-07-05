@@ -22,6 +22,8 @@ struct Constants {
     static let kBlue      = UIColor(hue: 0.5583, saturation: 1, brightness: 0.79, alpha: 1.0)
     static let kBlueSoft  = UIColor(hue: 0.5583, saturation: 1, brightness: 0.79, alpha: 0.75)
     static let kBlueLight = UIColor(hue: 0.5583, saturation: 1, brightness: 0.79, alpha: 0.5)
+    static let kIndigo    = UIColor(rgba: "#3F51B5")
+    static let kLightBlue = UIColor(rgba: "#E1F5FE")
   }
   
   struct Messages {

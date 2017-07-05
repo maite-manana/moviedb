@@ -13,6 +13,7 @@
 		B0194E451F083699001FDB19 /* GenreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0194E441F083699001FDB19 /* GenreRouter.swift */; };
 		B0194E471F08375F001FDB19 /* ApiManagerGenreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0194E461F08375F001FDB19 /* ApiManagerGenreExtension.swift */; };
 		B0194E491F084008001FDB19 /* ShareUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0194E481F084008001FDB19 /* ShareUtils.swift */; };
+		B01C2FBA1F0D5DD000A2C820 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */; };
 		B02734821F0697B7009020EF /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02734811F0697B7009020EF /* ImageViewUtils.swift */; };
 		B07FCAC71EFF001000484344 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FCAC61EFF000F00484344 /* ApiManager.swift */; };
 		B07FCAC91EFF00AB00484344 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FCAC81EFF00AB00484344 /* Constants.swift */; };
@@ -83,6 +84,7 @@
 		B0194E441F083699001FDB19 /* GenreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreRouter.swift; sourceTree = "<group>"; };
 		B0194E461F08375F001FDB19 /* ApiManagerGenreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerGenreExtension.swift; sourceTree = "<group>"; };
 		B0194E481F084008001FDB19 /* ShareUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareUtils.swift; sourceTree = "<group>"; };
+		B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B02734811F0697B7009020EF /* ImageViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
 		B07FCAC61EFF000F00484344 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		B07FCAC81EFF00AB00484344 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 				90AFE19B0318BDC7EF1C18AC /* Pods-moviedb.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B01C2FB81F0D5D9A00A2C820 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		B07FCACA1EFF03F500484344 /* Models */ = {
@@ -340,6 +350,7 @@
 		E555FB651EF1CDCC00016D0F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B01C2FB81F0D5D9A00A2C820 /* Extensions */,
 				E5B0C2551F01BED7008B5E46 /* ContentCell.xib */,
 				E555FB661EF1CDD400016D0F /* MessageHandler.swift */,
 				B081F7461F02C4D5009124FC /* UILoadingView.swift */,
@@ -572,6 +583,7 @@
 				B09D409D1F0440F100F2A546 /* MoviesRouter.swift in Sources */,
 				B0194E3F1F06EC78001FDB19 /* BaseRouterManager.swift in Sources */,
 				B081F7381F028C29009124FC /* ContentDetailPresenter.swift in Sources */,
+				B01C2FBA1F0D5DD000A2C820 /* UIColorExtension.swift in Sources */,
 				E530EE7B1F0AD3A300FAE56C /* FavView.swift in Sources */,
 				E5F38A371F0B04B7006A2272 /* FavCell.swift in Sources */,
 				B0194E471F08375F001FDB19 /* ApiManagerGenreExtension.swift in Sources */,
