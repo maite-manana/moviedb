@@ -33,6 +33,7 @@ struct Constants {
     static let kFavErrorMessage = "No se ha podido agregar la película a favoritos"
     static let kUnfavErrorMessage = "No se ha podido eliminar la película a favoritos"
     static let kNoFilmsZeroState = "No hay películas disponibles"
+    static let kNoFilmsTryAgainZeroState = "No hay películas, busca otra vez"
     static let kNoFavsZeroState = "Todavía no tienes favoritos"
   }
 }

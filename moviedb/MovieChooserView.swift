@@ -11,5 +11,5 @@ import Foundation
 protocol MovieChooserView {
     func startLoading()
     func finishLoading()
-    func setMovies(movieList: ArraySlice<Movie>)
+    func setMovies(movieList: ArraySlice<Movie>, movieIndex: Int)
 }

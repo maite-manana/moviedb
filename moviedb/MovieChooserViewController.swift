@@ -8,12 +8,14 @@
 
 import UIKit
 import Foundation
+import DZNEmptyDataSet
 
 class MovieChooserViewController: UIViewController {
   
   fileprivate var movieChooserPresenter = MovieChooserPresenter()
   
   var selectedGenre = [String]()
+  var movieIndex = 0
   
   @IBOutlet weak var movieTableView: UITableView!
   @IBOutlet weak var loadingView: UILoadingView!
@@ -48,7 +50,8 @@ extension MovieChooserViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
-    cell.configure(movie: contentList[indexPath.row])
+    cell.configure(movie: contentList[self.movieIndex])
+    self.movieIndex += 1
     return cell
   }
   
@@ -80,8 +83,30 @@ extension MovieChooserViewController: MovieChooserView {
     loadingView.hideLoadingIndicator()
   }
   
-  func setMovies(movieList: ArraySlice<Movie>) {
+  func setMovies(movieList: ArraySlice<Movie>, movieIndex: Int) {
+    setupEmptyDataSet()
     contentList = movieList
+    self.movieIndex = movieIndex
     movieTableView.reloadData()
   }
+}
+
+extension MovieChooserViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "nofilms")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let myString = Constants.Messages.kNoFilmsTryAgainZeroState
+        let myAttribute = [ NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15) ]
+        
+        return NSAttributedString(string: myString, attributes: myAttribute)
+    }
+    
+    func setupEmptyDataSet() {
+        movieTableView.emptyDataSetSource = self
+        movieTableView.emptyDataSetDelegate = self
+        movieTableView.tableFooterView = UIView()
+    }
 }
