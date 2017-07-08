@@ -102,4 +102,19 @@ class HomePresenter {
     }
   }
   
+  func searchMovie(name: String) {
+    homeView?.startLoading()
+    
+    APIManager.sharedInstance.searchMovie(movieName: name, completionHandler: { (baseResponse) in
+      self.homeView?.finishLoading()
+      
+      var movies = [Movie]()
+      let coversResponse = baseResponse?.results as! Array<NSDictionary>
+      movies = coversResponse.map({ (responseDictionary) -> Movie in
+        Mapper<Movie>().map(JSONObject: responseDictionary)!
+      })
+      
+      self.homeView?.setContent(moviesList: movies)
+    });
+  }
 }

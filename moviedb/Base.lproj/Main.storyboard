@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,37 +23,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1mL-vJ-ht3">
-                                <rect key="frame" x="-1" y="49" width="376" height="525"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-2H-gYg">
-                                <rect key="frame" x="157" y="580" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="BUSCAR"/>
-                                <connections>
-                                    <action selector="search:" destination="gwc-5P-53n" eventType="touchUpInside" id="Pvt-XS-a1n"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecciona los géneros que te interesan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPD-hP-nch">
                                 <rect key="frame" x="16" y="76" width="343" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voX-SW-6om">
+                                <rect key="frame" x="0.0" y="108" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="AdW-M6-k0a"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIg-ug-BuW">
+                                <rect key="frame" x="0.0" y="216" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="73u-yA-6dX"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-2s-PEA">
+                                <rect key="frame" x="0.0" y="324" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fnZ-t1-Lod"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-2H-gYg">
+                                <rect key="frame" x="157" y="566" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="BUSCAR"/>
+                                <connections>
+                                    <action selector="search:" destination="gwc-5P-53n" eventType="touchUpInside" id="Pvt-XS-a1n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="tPD-hP-nch" secondAttribute="leading" id="5Fr-wa-Rzs"/>
+                            <constraint firstItem="voX-SW-6om" firstAttribute="top" secondItem="tPD-hP-nch" secondAttribute="bottom" constant="8" id="5jv-cE-qiU"/>
+                            <constraint firstItem="LIg-ug-BuW" firstAttribute="leading" secondItem="ThX-0u-4Ft" secondAttribute="leading" id="66y-Ef-FX6"/>
                             <constraint firstItem="tPD-hP-nch" firstAttribute="top" secondItem="MlQ-zO-f0h" secondAttribute="bottom" constant="12" id="6Sa-MD-arK"/>
+                            <constraint firstAttribute="trailing" secondItem="voX-SW-6om" secondAttribute="trailing" id="LKo-Ay-bsm"/>
+                            <constraint firstAttribute="trailing" secondItem="TJv-2s-PEA" secondAttribute="trailing" id="LhW-mN-QeK"/>
+                            <constraint firstItem="TJv-2s-PEA" firstAttribute="leading" secondItem="ThX-0u-4Ft" secondAttribute="leading" id="Udc-UF-ZLw"/>
+                            <constraint firstAttribute="trailing" secondItem="LIg-ug-BuW" secondAttribute="trailing" id="VhQ-RF-2jD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tPD-hP-nch" secondAttribute="trailing" id="beD-01-QEa"/>
+                            <constraint firstItem="LIg-ug-BuW" firstAttribute="top" secondItem="voX-SW-6om" secondAttribute="bottom" constant="8" id="gaE-39-01M"/>
+                            <constraint firstItem="TJv-2s-PEA" firstAttribute="top" secondItem="LIg-ug-BuW" secondAttribute="bottom" constant="8" id="qBY-91-n7T"/>
+                            <constraint firstItem="voX-SW-6om" firstAttribute="leading" secondItem="ThX-0u-4Ft" secondAttribute="leading" id="yTA-wz-Z4g"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="pWx-jO-gf3"/>
                     <navigationItem key="navigationItem" title="Random" id="Tzz-np-sbd"/>
                     <connections>
-                        <outlet property="genresTableView" destination="1mL-vJ-ht3" id="rS7-GU-ea3"/>
+                        <outlet property="pickerView1" destination="voX-SW-6om" id="jmt-ZV-Ixr"/>
+                        <outlet property="pickerView2" destination="LIg-ug-BuW" id="cjz-vI-aLJ"/>
+                        <outlet property="pickerView3" destination="TJv-2s-PEA" id="Q5W-3f-KLH"/>
                         <segue destination="I4l-vc-xgC" kind="show" identifier="movieChooserList" id="krp-Sy-vXf"/>
                     </connections>
                 </viewController>

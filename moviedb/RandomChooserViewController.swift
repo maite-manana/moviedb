@@ -10,86 +10,72 @@ import Foundation
 import UIKit
 
 class RandomChooserViewController : UIViewController {
+  
+  fileprivate var randomChooserPresenter = RandomChooserPresenter()
+  
+  @IBOutlet weak var pickerView1: UIPickerView!
+  @IBOutlet weak var pickerView3: UIPickerView!
+  @IBOutlet weak var pickerView2: UIPickerView!
+  var genresList: [Genre] = []
+  var genreSelected: [String] = []
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    fileprivate var randomChooserPresenter = RandomChooserPresenter()
+    pickerView1.delegate = self
+    pickerView1.dataSource = self
+    pickerView2.delegate = self
+    pickerView2.dataSource = self
+    pickerView3.delegate = self
+    pickerView3.dataSource = self
     
-    @IBOutlet weak var genresTableView: UITableView!
-    
-    var genresList: [Genre] = []
-    var genreSelected: [String] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        genresTableView.dataSource = self
-        genresTableView.delegate = self
-        
-        randomChooserPresenter.attachView(self)
-        randomChooserPresenter.getGenres()
-        
-        let nib = UINib(nibName: "GenreCell", bundle: nil)
-        self.genresTableView.register(nib, forCellReuseIdentifier: "cell")
-        
-    }
-    
-    @IBAction func search(_ sender: Any) {
-        self.performSegue(withIdentifier: "movieChooserList", sender: self)
-    }
+    randomChooserPresenter.attachView(self)
+    randomChooserPresenter.getGenres()
+  }
+  
+  @IBAction func search(_ sender: Any) {
+    self.performSegue(withIdentifier: "movieChooserList", sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let movieChooserViewController = segue.destination as! MovieChooserViewController
+    genreSelected.append(String(genresList[pickerView1.selectedRow(inComponent: 0)].id!))
+    genreSelected.append(String(genresList[pickerView2.selectedRow(inComponent: 0)].id!))
+    genreSelected.append(String(genresList[pickerView3.selectedRow(inComponent: 0)].id!))
+    movieChooserViewController.selectedGenre = genreSelected
+  }
   
 }
 
-extension RandomChooserViewController : UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.genresList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! GenreCell
-        cell.configure(genre: genresList[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (genreSelected.count > 2) {
-            MessageHandler.showMessage(title: "Error", body: "Debes elegir entre 1 y 3 géneros", type: messageType.ERROR)
-        } else {
-            let currentCell = tableView.cellForRow(at: indexPath) as!GenreCell
-            genreSelected.append(String(genresList[indexPath.row].id!))
-            currentCell.checked.isHidden = false
-            currentCell.checked.text = "check"
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let movieChooserViewController = segue.destination as! MovieChooserViewController
-        movieChooserViewController.selectedGenre = genreSelected
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 50.0
-    }
+extension RandomChooserViewController : UIPickerViewDataSource, UIPickerViewDelegate {
   
-}
-
-extension RandomChooserViewController : UITableViewDelegate {
-    
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return genresList.count
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return genresList[row].name
+  }
 }
 
 extension RandomChooserViewController : RandomChooserView {
-    func startLoading() {
-    }
+  func startLoading() {
+  }
+  
+  func finishLoading() {
+  }
+  
+  func setGenres(genreList: [Genre]) {
+    genresList = genreList
+    pickerView1.reloadAllComponents()
+    pickerView2.reloadAllComponents()
+    pickerView3.reloadAllComponents()  }
+  
+  func setRandom(movieList: [Movie]) {
     
-    func finishLoading() {
-    }
-    
-    func setGenres(genreList: [Genre]) {
-        genresList = genreList
-        genresTableView.reloadData()
-    }
-    
-    func setRandom(movieList: [Movie]) {
-        
-    }
+  }
 }

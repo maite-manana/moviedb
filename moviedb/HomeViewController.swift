@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
   
   var contentList: ArraySlice<Movie> = []
   var selectedItem: Movie!
-  var searchController = UISearchController()
+  let searchController = UISearchController(searchResultsController: nil)
   var favActionTitle = "Fav"
   
   override func viewDidLoad() {
@@ -91,9 +91,11 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func setupContentTable() {
+    searchController.searchBar.delegate = self
     moviesTableView.dataSource = self
     moviesTableView.delegate = self
     moviesTableView.separatorStyle = .none
+    moviesTableView.tableHeaderView = searchController.searchBar
     let nib = UINib(nibName: "ContentCell", bundle: nil)
     self.moviesTableView.register(nib, forCellReuseIdentifier: "cell")
   }
@@ -118,6 +120,19 @@ extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     moviesTableView.emptyDataSetSource = self
     moviesTableView.emptyDataSetDelegate = self
     moviesTableView.tableFooterView = UIView()
+  }
+}
+
+extension HomeViewController : UISearchBarDelegate {
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+      homePresenter.searchMovie(name: searchText)
+    }
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    homePresenter.getContent()
   }
 }
 

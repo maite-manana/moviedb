@@ -20,7 +20,10 @@ class ContentCell: UITableViewCell {
     self.selectionStyle = UITableViewCellSelectionStyle.none
     self.title.text = movie.title
     self.additionalData.text = movie.overview
-    ImageViewUtils.loadImage(imageURL: movie.posterPath!, imageView: self.poster!)
+    let poster = movie.posterPath
+    if poster != nil {
+      ImageViewUtils.loadImage(imageURL: poster!, imageView: self.poster!)
+    }
     setupBackground()
   }
   
