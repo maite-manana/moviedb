@@ -39,9 +39,17 @@ class RandomChooserViewController : UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let movieChooserViewController = segue.destination as! MovieChooserViewController
-    genreSelected.append(String(genresList[pickerView1.selectedRow(inComponent: 0)].id!))
-    genreSelected.append(String(genresList[pickerView2.selectedRow(inComponent: 0)].id!))
-    genreSelected.append(String(genresList[pickerView3.selectedRow(inComponent: 0)].id!))
+    genreSelected = []
+    if let selectedGenre1 = genresList[pickerView1.selectedRow(inComponent: 0)].id {
+        genreSelected.append(String(selectedGenre1))
+    }
+    if let selectedGenre2 = genresList[pickerView2.selectedRow(inComponent: 0)].id {
+        genreSelected.append(String(selectedGenre2))
+    }
+    if let selectedGenre3 = genresList[pickerView3.selectedRow(inComponent: 0)].id {
+        genreSelected.append(String(selectedGenre3))
+    }
+    
     movieChooserViewController.selectedGenre = genreSelected
   }
   
@@ -70,7 +78,7 @@ extension RandomChooserViewController : RandomChooserView {
   }
   
   func setGenres(genreList: [Genre]) {
-    genresList = genreList
+    genresList = [Genre()] + genreList
     pickerView1.reloadAllComponents()
     pickerView2.reloadAllComponents()
     pickerView3.reloadAllComponents()  }
