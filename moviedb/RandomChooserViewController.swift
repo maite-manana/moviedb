@@ -28,7 +28,7 @@ class RandomChooserViewController : UIViewController {
         randomChooserPresenter.getGenres()
         
         let nib = UINib(nibName: "GenreCell", bundle: nil)
-        self.genresTableView.register(nib, forCellReuseIdentifier: "cellGenre")
+        self.genresTableView.register(nib, forCellReuseIdentifier: "cell")
         
     }
     
@@ -45,7 +45,7 @@ extension RandomChooserViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellGenre") as! GenreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! GenreCell
         cell.configure(genre: genresList[indexPath.row])
         return cell
     }
@@ -64,6 +64,11 @@ extension RandomChooserViewController : UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let movieChooserViewController = segue.destination as! MovieChooserViewController
         movieChooserViewController.selectedGenre = genreSelected
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 50.0
     }
   
 }

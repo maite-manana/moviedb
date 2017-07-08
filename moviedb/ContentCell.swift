@@ -29,7 +29,5 @@ class ContentCell: UITableViewCell {
     contentView.backgroundColor = UIColor(colorLiteralRed: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
     backgroundCardView?.layer.cornerRadius = 5.0
     backgroundCardView?.layer.masksToBounds = false
-    backgroundCardView?.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-    backgroundCardView?.layer.shadowOpacity = 0.8
   }
 }

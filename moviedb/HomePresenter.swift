@@ -58,7 +58,7 @@ class HomePresenter {
         
     }
   
-  func addFav(id: Int, title: String, posterPath: String, overview: String) {
+  func addFav(id: Int, title: String, posterPath: String, overview: String){
     if checkIfFavorite(id: id) {
         context.delete(favElem[0] as NSManagedObject)
         do {

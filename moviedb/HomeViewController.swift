@@ -64,17 +64,20 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let id = self.contentList[indexPath.row].id!
+    let added = self.homePresenter.checkIfFavorite(id: id)
+    if added {
+        self.favActionTitle = "Unfav"
+    } else {
+        self.favActionTitle = "Fav"
+    }
     let favorite = UITableViewRowAction(style: .normal, title: favActionTitle) { action, index in
-      let id = self.contentList[indexPath.row].id!
       let title = self.contentList[indexPath.row].title!
       let posterPath = self.contentList[indexPath.row].posterPath!
       let overview = self.contentList[indexPath.row].overview!
       self.homePresenter.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
-      if self.favActionTitle == "Fav" {
-        self.favActionTitle = "UnFav"
-      } else {
-        self.favActionTitle = "Fav"
-      }
+      tableView.setEditing(false, animated: true)
+
     }
     favorite.backgroundColor = Constants.Colors.kIndigo
     
@@ -83,7 +86,7 @@ extension HomeViewController: UITableViewDataSource {
       self.homePresenter.shareAction(id: id)
     }
     share.backgroundColor = Constants.Colors.kBlueLight
-    
+
     return [share, favorite]
   }
   
