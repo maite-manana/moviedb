@@ -20,7 +20,7 @@ class MovieChooserViewController: UIViewController {
   @IBOutlet weak var movieTableView: UITableView!
   @IBOutlet weak var loadingView: UILoadingView!
   
-  var contentList: ArraySlice<Movie> = []
+  var contentList: [Movie] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,7 +50,7 @@ extension MovieChooserViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ContentCell
-    cell.configure(movie: contentList[self.movieIndex])
+    cell.configure(movie: contentList[indexPath.row])
     self.movieIndex += 1
     return cell
   }
@@ -83,7 +83,7 @@ extension MovieChooserViewController: MovieChooserView {
     loadingView.hideLoadingIndicator()
   }
   
-  func setMovies(movieList: ArraySlice<Movie>, movieIndex: Int) {
+  func setMovies(movieList: [Movie], movieIndex: Int) {
     setupEmptyDataSet()
     contentList = movieList
     self.movieIndex = movieIndex

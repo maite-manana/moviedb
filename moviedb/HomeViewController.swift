@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
   
   fileprivate var homePresenter = HomePresenter()
   
-  var contentList: ArraySlice<Movie> = []
+  var contentList: [Movie] = []
   var selectedItem: Movie!
   let searchController = UISearchController(searchResultsController: nil)
   var favActionTitle = "Fav"
@@ -147,7 +147,7 @@ extension HomeViewController: HomeView {
   
   func setContent(moviesList: [Movie]) {
     setupEmptyDataSet()
-    contentList = moviesList[0..<5]
+    contentList = moviesList
     moviesTableView.reloadData()
   }
   

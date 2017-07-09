@@ -19,17 +19,19 @@ class APIManager: NSObject {
   func requestForObjectResponse<T: Mappable>(manager: RouterManager.Type, router: Router, completionHandler: @escaping (T?) -> Void)  {
     Alamofire.request(try! manager.route(router: router))
       .responseObject(completionHandler: { (response: DataResponse<T>) -> Void in
-        let responseMovie = response.result.value!
-        completionHandler(responseMovie)
+        if (response.result.value != nil) {
+          let responseMovie = response.result.value!
+          completionHandler(responseMovie)
+        } else {
+          self.handleError(error: response.result.error as NSError?)
+          completionHandler(nil)
+        }
       })
   }
   
-  func handleError(error: NSError?) -> Bool {
+  func handleError(error: NSError?) {
     if error != nil {
       MessageHandler.showMessage(title: "Error", body: "Ha ocurrido un error", type: messageType.ERROR)
-      return false
     }
-    
-    return true
   }
 }
