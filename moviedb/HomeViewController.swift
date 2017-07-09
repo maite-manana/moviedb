@@ -153,7 +153,7 @@ extension HomeViewController: HomeView {
   
   func showSuccessFavMessage() {
     MessageHandler.showMessage(title: "❤️", body: Constants.Messages.kFavSuccessMessage, type: messageType.SUCCESS)
-  }
+}
   
   func showErrorFavMessage() {
     MessageHandler.showMessage(title: Constants.Messages.kGenericErrorMessage, body: Constants.Messages.kFavErrorMessage, type: messageType.ERROR)
