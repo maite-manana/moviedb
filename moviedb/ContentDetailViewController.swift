@@ -40,10 +40,10 @@ class ContentDetailViewController : UIViewController {
     }
     contentDescription.text = selectedContent.overview
     contentDescription.sizeToFit()
-    let url = URL(string: Constants.APIConstants.kBaseImageURL + selectedContent.posterPath!)
-    let data = try? Data(contentsOf: url!)
-    contentImage.image = UIImage(data: data!)
     
+    if selectedContent.posterPath != nil {
+      ImageViewUtils.loadImage(imageURL: selectedContent.posterPath!, imageView: contentImage)
+    }  
     setFavButton(favImage: #imageLiteral(resourceName: "heartfill"), notFavImage: #imageLiteral(resourceName: "heart"))
     
     let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(shareContent))
