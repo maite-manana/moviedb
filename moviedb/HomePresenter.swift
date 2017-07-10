@@ -65,43 +65,20 @@ class HomePresenter {
   func shareAction(id: String) {
     getContentVideo(id: id)
   }
-  
-  func checkIfFavorite(id: Int) -> Bool {
-    let predicate = NSPredicate(format: "id == %@", id as NSNumber)
-    
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Fav")
-    fetchRequest.predicate = predicate
-    
-    do {
-      favElem = try context.fetch(fetchRequest) as! [NSManagedObject]
-    } catch {}
-    isFav = !favElem.isEmpty
-    return isFav
-    
-  }
-  
+
   func addFav(id: Int, title: String, posterPath: String, overview: String){
-    if checkIfFavorite(id: id) {
-      context.delete(favElem[0] as NSManagedObject)
-      do {
-        try context.save()
+    let response = FavHandler.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
+    switch response {
+    case Constants.FavResults.kUnFavSuccess:
         homeView?.showSuccessUnfavMessage()
-      } catch {
-        homeView?.showSuccessUnfavMessage()
-      }
-    } else {
-      let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into:self.context) as! Fav
-      fav.id = Int32(id)
-      fav.title = title
-      fav.posterPath = posterPath
-      fav.overview = overview
-      
-      do {
-        try context.save()
+    case Constants.FavResults.kUnFavError:
+        homeView?.showErrorUnfavMessage()
+    case Constants.FavResults.kFavSuccess:
         homeView?.showSuccessFavMessage()
-      } catch {
-        homeView?.showSuccessFavMessage()
-      }
+    case Constants.FavResults.kFavError:
+        homeView?.showErrorFavMessage()
+    default:
+      break
     }
   }
   

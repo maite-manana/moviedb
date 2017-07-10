@@ -81,7 +81,7 @@ extension HomeViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     let id = self.contentList[indexPath.row].id!
-    let added = self.homePresenter.checkIfFavorite(id: id)
+    let added = FavHandler.checkIfFavorite(id: id)
     if added {
         self.favActionTitle = "Unfav"
     } else {

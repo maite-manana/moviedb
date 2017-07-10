@@ -36,4 +36,12 @@ struct Constants {
     static let kNoFilmsTryAgainZeroState = "No hay películas, busca otra vez"
     static let kNoFavsZeroState = "Todavía no tienes favoritos"
   }
+    
+  struct FavResults {
+    static let kFavSuccess = "FAV_SUCCESS"
+    static let kFavError = "FAV_ERROR"
+    static let kUnFavSuccess = "UNFAV_SUCCESS"
+    static let kUnFavError = "UNFAV_ERROR"
+        
+  }
 }

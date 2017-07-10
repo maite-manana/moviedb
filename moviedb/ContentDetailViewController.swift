@@ -55,7 +55,7 @@ class ContentDetailViewController : UIViewController {
   }
     
     func setFavButton(favImage: UIImage, notFavImage: UIImage) {
-    fav = contentDetailPresenter.checkIfFavorite(id: selectedContent.id!)
+    fav = FavHandler.checkIfFavorite(id: selectedContent.id!)
     if fav {
         favButton.setImage(favImage, for: .normal)
     } else {

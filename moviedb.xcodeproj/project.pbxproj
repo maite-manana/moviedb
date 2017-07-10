@@ -54,6 +54,7 @@
 		E55317EE1EF9ADDC00CEEFD6 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55317ED1EF9ADDC00CEEFD6 /* HomePresenter.swift */; };
 		E555FB641EF1CA9700016D0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555FB631EF1CA9700016D0F /* HomeViewController.swift */; };
 		E555FB671EF1CDD400016D0F /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555FB661EF1CDD400016D0F /* MessageHandler.swift */; };
+		E593336D1F1421CD00AF2EB3 /* FavHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E593336C1F1421CD00AF2EB3 /* FavHandler.swift */; };
 		E5B0C2561F01BED7008B5E46 /* ContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B0C2551F01BED7008B5E46 /* ContentCell.xib */; };
 		E5B0C2581F01BF86008B5E46 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0C2571F01BF86008B5E46 /* ContentCell.swift */; };
 		E5F38A371F0B04B7006A2272 /* FavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F38A351F0B04B7006A2272 /* FavCell.swift */; };
@@ -134,6 +135,7 @@
 		E555FB631EF1CA9700016D0F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E555FB661EF1CDD400016D0F /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		E58855751F0C888500C252A4 /* moviedb 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "moviedb 2.xcdatamodel"; sourceTree = "<group>"; };
+		E593336C1F1421CD00AF2EB3 /* FavHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavHandler.swift; sourceTree = "<group>"; };
 		E5B0C2551F01BED7008B5E46 /* ContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCell.xib; sourceTree = "<group>"; };
 		E5B0C2571F01BF86008B5E46 /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		E5F38A351F0B04B7006A2272 /* FavCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				B081F7521F030F55009124FC /* GenreCell.xib */,
 				B02734811F0697B7009020EF /* ImageViewUtils.swift */,
 				B0194E481F084008001FDB19 /* ShareUtils.swift */,
+				E593336C1F1421CD00AF2EB3 /* FavHandler.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				B081F7381F028C29009124FC /* ContentDetailPresenter.swift in Sources */,
 				B01C2FBA1F0D5DD000A2C820 /* UIColorExtension.swift in Sources */,
 				E530EE7B1F0AD3A300FAE56C /* FavView.swift in Sources */,
+				E593336D1F1421CD00AF2EB3 /* FavHandler.swift in Sources */,
 				E5F38A371F0B04B7006A2272 /* FavCell.swift in Sources */,
 				B0194E471F08375F001FDB19 /* ApiManagerGenreExtension.swift in Sources */,
 				B09E91E71F0410D400757ED0 /* HomeView.swift in Sources */,
