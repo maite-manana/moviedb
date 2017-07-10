@@ -16,13 +16,17 @@ class Movie: NSObject, Mappable, NSCoding {
         
         let id = decoder.decodeObject(forKey: "id") as? Int
         let voteAverage = decoder.decodeObject(forKey: "voteAverage") as? Int
-        let title = decoder.decodeObject(forKey: "title") as? String
         let posterPath = decoder.decodeObject(forKey: "posterPath") as? String
         let overview = decoder.decodeObject(forKey: "overview") as? String
         
+        if let title = decoder.decodeObject(forKey: "title") as? String {
+            self.title = title
+        } else if let name = decoder.decodeObject(forKey: "name") as? String {
+             self.title = name
+        }
+
         self.id = id
         self.voteAverage = voteAverage
-        self.title = title
         self.posterPath = posterPath
         self.overview = overview
     }
@@ -31,6 +35,7 @@ class Movie: NSObject, Mappable, NSCoding {
         coder.encode(id, forKey: "id")
         coder.encode(voteAverage, forKey: "voteAverage")
         coder.encode(title, forKey: "title")
+        coder.encode(name, forKey: "name")
         coder.encode(posterPath, forKey: "posterPath")
         coder.encode(overview, forKey: "overview")
     }
@@ -40,6 +45,7 @@ class Movie: NSObject, Mappable, NSCoding {
     var id: Int?
     var voteAverage: Int?
     var title: String?
+    var name: String?
     var posterPath: String?
     var overview: String?
 
@@ -49,6 +55,7 @@ class Movie: NSObject, Mappable, NSCoding {
         id <- map["id"]
         voteAverage <- map["vote_average"]
         title <- map["title"]
+        name <- map["name"]
         posterPath <- map["poster_path"]
         overview <- map["overview"]
     }

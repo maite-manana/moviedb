@@ -76,7 +76,11 @@ class ContentDetailPresenter {
     } else {
         let fav = NSEntityDescription.insertNewObject(forEntityName: "Fav", into:self.context) as! Fav
         fav.id = Int32(movie.id!)
-        fav.title = movie.title
+        if let title = movie.title {
+            fav.title = title
+        } else if let name = movie.name {
+            fav.title = name
+        }
         fav.posterPath = movie.posterPath
         fav.overview = movie.overview
         

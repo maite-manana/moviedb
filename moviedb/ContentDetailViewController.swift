@@ -32,7 +32,11 @@ class ContentDetailViewController : UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    contentTitle.text = selectedContent.title
+    if let title = selectedContent.title {
+      contentTitle.text = title
+    } else if let name = selectedContent.name {
+      contentTitle.text = name
+    }
     contentDescription.text = selectedContent.overview
     contentDescription.sizeToFit()
     let url = URL(string: Constants.APIConstants.kBaseImageURL + selectedContent.posterPath!)

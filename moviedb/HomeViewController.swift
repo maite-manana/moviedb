@@ -88,9 +88,15 @@ extension HomeViewController: UITableViewDataSource {
         self.favActionTitle = "Fav"
     }
     let favorite = UITableViewRowAction(style: .normal, title: favActionTitle) { action, index in
-      let title = self.contentList[indexPath.row].title!
+      var title = ""
+      if let content_title = self.contentList[indexPath.row].title {
+        title = content_title
+      } else if let content_name = self.contentList[indexPath.row].name {
+        title = content_name
+      }
       let posterPath = self.contentList[indexPath.row].posterPath!
       let overview = self.contentList[indexPath.row].overview!
+
       self.homePresenter.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
       tableView.setEditing(false, animated: true)
 

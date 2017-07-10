@@ -19,6 +19,11 @@ class ContentCell: UITableViewCell {
   func configure(movie: Movie) {
     self.selectionStyle = UITableViewCellSelectionStyle.none
     self.title.text = movie.title
+    if let title = movie.title {
+        self.title.text = title
+    } else if let name = movie.name {
+        self.title.text = name
+    }
     self.additionalData.text = movie.overview
     let poster = movie.posterPath
     if poster != nil {

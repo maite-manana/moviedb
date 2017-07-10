@@ -30,13 +30,17 @@ class HomePresenter {
     APIManager.sharedInstance.getNowPlayingTv(completionHandler: { (baseResponse) in
       self.homeView?.finishLoading()
       
-      var movies = [Movie]()
-      let coversResponse = baseResponse?.results as! Array<NSDictionary>
-      movies = coversResponse.map({ (responseDictionary) -> Movie in
-        Mapper<Movie>().map(JSONObject: responseDictionary)!
-      })
+        var firstMovies = [Movie]()
+        if (baseResponse != nil) {
+            let coversResponse = baseResponse?.results as! Array<NSDictionary>
+            let movies = coversResponse.map({ (responseDictionary) -> Movie in
+                Mapper<Movie>().map(JSONObject: responseDictionary)!
+            })
+            firstMovies = movies.count > 5 ? Array(movies.prefix(5)) : movies
+        }
+
       
-      self.homeView?.setContent(moviesList: movies)
+      self.homeView?.setContent(moviesList: firstMovies)
     });
   }
   
