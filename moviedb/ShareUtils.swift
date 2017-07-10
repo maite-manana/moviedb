@@ -12,7 +12,7 @@ struct ShareUtils {
   
   static func shareWhatsApp(videos: [Video]) -> URL {
     let videoUrl = videos.count > 0 ? Constants.APIConstants.kBaseYouTube + videos[0].key! : ""
-    let urlString = "Sending WhatsApp message through app in Swift." + videoUrl
+    let urlString = "Ine y Mai te mandan este contenido multimedia 🍿" + videoUrl
     let urlwithPercentEscapes = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     return URL(string: "whatsapp://send?text=\(urlwithPercentEscapes!)")!
   }
