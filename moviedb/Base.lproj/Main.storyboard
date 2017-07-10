@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="81Q-5g-c1G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,6 +41,14 @@
                                     <constraint firstAttribute="height" constant="100" id="73u-yA-6dX"/>
                                 </constraints>
                             </pickerView>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZF-i5-R3a" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
+                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="b0t-We-SLy"/>
+                                    <constraint firstAttribute="height" constant="80" id="mDZ-uZ-7di"/>
+                                </constraints>
+                            </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-2s-PEA">
                                 <rect key="frame" x="0.0" y="320.5" width="375" height="100"/>
                                 <constraints>
@@ -61,6 +69,7 @@
                             <constraint firstItem="voX-SW-6om" firstAttribute="top" secondItem="tPD-hP-nch" secondAttribute="bottom" constant="8" id="5jv-cE-qiU"/>
                             <constraint firstItem="LIg-ug-BuW" firstAttribute="leading" secondItem="ThX-0u-4Ft" secondAttribute="leading" id="66y-Ef-FX6"/>
                             <constraint firstItem="tPD-hP-nch" firstAttribute="top" secondItem="MlQ-zO-f0h" secondAttribute="bottom" constant="12" id="6Sa-MD-arK"/>
+                            <constraint firstItem="zZF-i5-R3a" firstAttribute="centerX" secondItem="ThX-0u-4Ft" secondAttribute="centerX" id="7UN-HF-iqz"/>
                             <constraint firstAttribute="trailing" secondItem="voX-SW-6om" secondAttribute="trailing" id="LKo-Ay-bsm"/>
                             <constraint firstAttribute="trailing" secondItem="TJv-2s-PEA" secondAttribute="trailing" id="LhW-mN-QeK"/>
                             <constraint firstItem="bNy-2H-gYg" firstAttribute="centerX" secondItem="ThX-0u-4Ft" secondAttribute="centerX" id="LsQ-P9-7TA"/>
@@ -70,12 +79,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="tPD-hP-nch" secondAttribute="trailing" id="beD-01-QEa"/>
                             <constraint firstItem="LIg-ug-BuW" firstAttribute="top" secondItem="voX-SW-6om" secondAttribute="bottom" constant="8" id="gaE-39-01M"/>
                             <constraint firstItem="TJv-2s-PEA" firstAttribute="top" secondItem="LIg-ug-BuW" secondAttribute="bottom" constant="8" id="qBY-91-n7T"/>
+                            <constraint firstItem="zZF-i5-R3a" firstAttribute="centerY" secondItem="ThX-0u-4Ft" secondAttribute="centerY" id="vaW-ZU-VyO"/>
                             <constraint firstItem="voX-SW-6om" firstAttribute="leading" secondItem="ThX-0u-4Ft" secondAttribute="leading" id="yTA-wz-Z4g"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="pWx-jO-gf3"/>
                     <navigationItem key="navigationItem" title="Choose my movie!" id="Tzz-np-sbd"/>
                     <connections>
+                        <outlet property="loadingView" destination="zZF-i5-R3a" id="wbT-Vx-ETN"/>
                         <outlet property="pickerView1" destination="voX-SW-6om" id="jmt-ZV-Ixr"/>
                         <outlet property="pickerView2" destination="LIg-ug-BuW" id="cjz-vI-aLJ"/>
                         <outlet property="pickerView3" destination="TJv-2s-PEA" id="Q5W-3f-KLH"/>
@@ -84,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42a-9l-fAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.59999999999999" y="393.55322338830587"/>
+            <point key="canvasLocation" x="173.5" y="393.5"/>
         </scene>
         <!--Movie Chooser View Controller-->
         <scene sceneID="unc-3P-My8">

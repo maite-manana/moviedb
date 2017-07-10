@@ -11,28 +11,28 @@ import ObjectMapper
 import CoreData
 
 class FavPresenter {
-    fileprivate var favView: FavView?
-
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var favs: [Fav] = []
-    
-    func attachView(_ view:FavView) {
-        favView = view
+  fileprivate var favView: FavView?
+  
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  var favs: [Fav] = []
+  
+  func attachView(_ view:FavView) {
+    favView = view
+  }
+  
+  func detachView() {
+    favView = nil
+  }
+  
+  func getContent() {
+    favView?.startLoading()
+    let favsfetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Fav")
+    do {
+      favs = try context.fetch(favsfetch) as! [Fav]
+    } catch {
+      fatalError("Error: \(error)")
     }
-    
-    func detachView() {
-        favView = nil
-    }
-    
-    func getContent() {
-      favView?.startLoading()
-        let favsfetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Fav")
-        do {
-            favs = try context.fetch(favsfetch) as! [Fav]
-        } catch {
-            fatalError("Error: \(error)")
-        }
-        favView?.finishLoading()
-        favView?.setContent(favsList: favs)
-    }
+    favView?.finishLoading()
+    favView?.setContent(favsList: favs)
+  }
 }

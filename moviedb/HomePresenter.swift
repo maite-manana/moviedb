@@ -28,19 +28,7 @@ class HomePresenter {
     homeView?.startLoading()
     
     APIManager.sharedInstance.getNowPlayingTv(completionHandler: { (baseResponse) in
-      self.homeView?.finishLoading()
-      
-        var firstMovies = [Movie]()
-        if (baseResponse != nil) {
-            let coversResponse = baseResponse?.results as! Array<NSDictionary>
-            let movies = coversResponse.map({ (responseDictionary) -> Movie in
-                Mapper<Movie>().map(JSONObject: responseDictionary)!
-            })
-            firstMovies = movies.count > 5 ? Array(movies.prefix(5)) : movies
-        }
-
-      
-      self.homeView?.setContent(moviesList: firstMovies)
+      self.processContentResult(baseResponse: baseResponse)
     });
   }
   
@@ -48,38 +36,26 @@ class HomePresenter {
     homeView?.startLoading()
     
     APIManager.sharedInstance.getNowPlayingMovies(completionHandler: { (baseResponse) in
-      self.homeView?.finishLoading()
-      
-      var firstMovies = [Movie]()
-      if (baseResponse != nil) {
-        let coversResponse = baseResponse?.results as! Array<NSDictionary>
-        let movies = coversResponse.map({ (responseDictionary) -> Movie in
-          Mapper<Movie>().map(JSONObject: responseDictionary)!
-        })
-        firstMovies = movies.count > 5 ? Array(movies.prefix(5)) : movies
-      }
-      self.homeView?.setContent(moviesList: firstMovies)
+      self.processContentResult(baseResponse: baseResponse)
     });
+  }
+  
+  fileprivate func processContentResult(baseResponse: BaseResponse?) {
+    self.homeView?.finishLoading()
+    
+    var firstMovies = [Movie]()
+    if (baseResponse != nil) {
+      let coversResponse = baseResponse?.results as! Array<NSDictionary>
+      let movies = coversResponse.map({ (responseDictionary) -> Movie in
+        Mapper<Movie>().map(JSONObject: responseDictionary)!
+      })
+      firstMovies = movies.count > 5 ? Array(movies.prefix(5)) : movies
+    }
+    self.homeView?.setContent(moviesList: firstMovies)
   }
   
   func shareAction(id: String) {
     getContentVideo(id: id)
-  }
-
-  func addFav(id: Int, title: String, posterPath: String, overview: String){
-    let response = FavHandler.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
-    switch response {
-    case Constants.FavResults.kUnFavSuccess:
-        homeView?.showSuccessUnfavMessage()
-    case Constants.FavResults.kUnFavError:
-        homeView?.showErrorUnfavMessage()
-    case Constants.FavResults.kFavSuccess:
-        homeView?.showSuccessFavMessage()
-    case Constants.FavResults.kFavError:
-        homeView?.showErrorFavMessage()
-    default:
-      break
-    }
   }
   
   func getContentVideo(id: String) {
@@ -105,16 +81,7 @@ class HomePresenter {
     homeView?.startLoading()
     
     APIManager.sharedInstance.searchMovie(movieName: name, completionHandler: { (baseResponse) in
-      self.homeView?.finishLoading()
-      
-      var movies = [Movie]()
-      if (baseResponse != nil) {
-        let coversResponse = baseResponse?.results as! Array<NSDictionary>
-        movies = coversResponse.map({ (responseDictionary) -> Movie in
-          Mapper<Movie>().map(JSONObject: responseDictionary)!
-        })
-      }
-      self.homeView?.setContent(moviesList: movies)
+      self.processSearchResult(baseResponse: baseResponse)
     });
   }
   
@@ -122,15 +89,37 @@ class HomePresenter {
     homeView?.startLoading()
     
     APIManager.sharedInstance.searchTv(tvName: name, completionHandler: { (baseResponse) in
-      self.homeView?.finishLoading()
-      
-      var movies = [Movie]()
+      self.processSearchResult(baseResponse: baseResponse)
+    });
+  }
+  
+  fileprivate func processSearchResult(baseResponse: BaseResponse?) {
+    self.homeView?.finishLoading()
+    
+    var movies = [Movie]()
+    if (baseResponse != nil) {
       let coversResponse = baseResponse?.results as! Array<NSDictionary>
       movies = coversResponse.map({ (responseDictionary) -> Movie in
         Mapper<Movie>().map(JSONObject: responseDictionary)!
       })
-      
-      self.homeView?.setContent(moviesList: movies)
-    });
+    }
+    
+    self.homeView?.setContent(moviesList: movies)
+  }
+  
+  func addFav(id: Int, title: String, posterPath: String, overview: String){
+    let response = FavHandler.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
+    switch response {
+    case Constants.FavResults.kUnFavSuccess:
+      homeView?.showSuccessUnfavMessage()
+    case Constants.FavResults.kUnFavError:
+      homeView?.showErrorUnfavMessage()
+    case Constants.FavResults.kFavSuccess:
+      homeView?.showSuccessFavMessage()
+    case Constants.FavResults.kFavError:
+      homeView?.showErrorFavMessage()
+    default:
+      break
+    }
   }
 }

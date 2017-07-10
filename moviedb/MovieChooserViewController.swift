@@ -31,6 +31,7 @@ class MovieChooserViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     movieTableView.tableFooterView = UIView(frame: CGRect.zero)
     
     let reloadButton = UIBarButtonItem.init(image: UIImage(named: "reload"), style: .plain, target: self, action: #selector(reloadContent))
@@ -43,7 +44,7 @@ class MovieChooserViewController: UIViewController {
   }
 }
 
-extension MovieChooserViewController: UITableViewDataSource {
+extension MovieChooserViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.contentList.count
   }
@@ -68,10 +69,6 @@ extension MovieChooserViewController: UITableViewDataSource {
     let nib = UINib(nibName: "ContentCell", bundle: nil)
     self.movieTableView.register(nib, forCellReuseIdentifier: "cell")
   }
-}
-
-extension MovieChooserViewController: UITableViewDelegate {
-  
 }
 
 extension MovieChooserViewController: MovieChooserView {

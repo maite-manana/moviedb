@@ -25,12 +25,12 @@ class FavViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     favPresenter.getContent()
   }
-  
 }
 
-extension FavViewController: UITableViewDataSource {
+extension FavViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.favList.count
@@ -55,8 +55,6 @@ extension FavViewController: UITableViewDataSource {
     return 165.0
   }
 }
-
-extension FavViewController: UITableViewDelegate {}
 
 extension FavViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
   

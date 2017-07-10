@@ -12,5 +12,4 @@ protocol RandomChooserView {
     func startLoading()
     func finishLoading()
     func setGenres(genreList: [Genre])
-    func setRandom(movieList: [Movie])
 }

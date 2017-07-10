@@ -32,6 +32,7 @@ class ContentDetailViewController : UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     if let title = selectedContent.title {
       contentTitle.text = title
     } else if let name = selectedContent.name {

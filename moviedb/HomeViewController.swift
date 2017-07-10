@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     moviesTableView.tableFooterView = UIView(frame: CGRect.zero)
   }
   @IBAction func indexChanged(_ sender: UISegmentedControl) {
@@ -52,7 +53,7 @@ class HomeViewController: UIViewController {
   }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.contentList.count
@@ -122,8 +123,6 @@ extension HomeViewController: UITableViewDataSource {
     self.moviesTableView.register(nib, forCellReuseIdentifier: "cell")
   }
 }
-
-extension HomeViewController: UITableViewDelegate {}
 
 extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
   

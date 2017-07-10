@@ -13,6 +13,7 @@ class RandomChooserViewController : UIViewController {
   
   fileprivate var randomChooserPresenter = RandomChooserPresenter()
   
+  @IBOutlet weak var loadingView: UILoadingView!
   @IBOutlet weak var pickerView1: UIPickerView!
   @IBOutlet weak var pickerView3: UIPickerView!
   @IBOutlet weak var pickerView2: UIPickerView!
@@ -30,6 +31,7 @@ class RandomChooserViewController : UIViewController {
     pickerView3.dataSource = self
     
     randomChooserPresenter.attachView(self)
+    loadingView.setupLoadingIndicator()
     randomChooserPresenter.getGenres()
   }
   
@@ -72,18 +74,17 @@ extension RandomChooserViewController : UIPickerViewDataSource, UIPickerViewDele
 
 extension RandomChooserViewController : RandomChooserView {
   func startLoading() {
+    loadingView.showLoadingIndicator()
   }
   
   func finishLoading() {
+    loadingView.hideLoadingIndicator()
   }
   
   func setGenres(genreList: [Genre]) {
     genresList = [Genre()] + genreList
     pickerView1.reloadAllComponents()
     pickerView2.reloadAllComponents()
-    pickerView3.reloadAllComponents()  }
-  
-  func setRandom(movieList: [Movie]) {
-    
+    pickerView3.reloadAllComponents()
   }
 }

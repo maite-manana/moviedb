@@ -22,7 +22,11 @@ class ContentDetailPresenter {
     contentDetailView = nil
   }
   
-  func getContentVideo(id: String) {
+  func shareContent(id: String) {
+    getContentVideo(id: id)
+  }
+  
+  fileprivate func getContentVideo(id: String) {
     APIManager.sharedInstance.getVideos(movieId: id, completionHandler: {
       (baseResponse) in
       var videos = [Video]()
@@ -34,11 +38,7 @@ class ContentDetailPresenter {
     });
   }
   
-  func shareContent(id: String) {
-    getContentVideo(id: id)
-  }
-  
-  func shareContent(videos: [Video]) {
+  fileprivate func shareContent(videos: [Video]) {
     let url = ShareUtils.shareWhatsApp(videos: videos)
     
     if UIApplication.shared.canOpenURL(url as URL) {
