@@ -24,6 +24,22 @@ class HomePresenter {
     homeView = nil
   }
   
+  func getTvContent() {
+    homeView?.startLoading()
+    
+    APIManager.sharedInstance.getNowPlayingTv(completionHandler: { (baseResponse) in
+      self.homeView?.finishLoading()
+      
+      var movies = [Movie]()
+      let coversResponse = baseResponse?.results as! Array<NSDictionary>
+      movies = coversResponse.map({ (responseDictionary) -> Movie in
+        Mapper<Movie>().map(JSONObject: responseDictionary)!
+      })
+      
+      self.homeView?.setContent(moviesList: movies)
+    });
+  }
+  
   func getContent() {
     homeView?.startLoading()
     
@@ -117,6 +133,22 @@ class HomePresenter {
           Mapper<Movie>().map(JSONObject: responseDictionary)!
         })
       }
+      self.homeView?.setContent(moviesList: movies)
+    });
+  }
+  
+  func searchTv(name: String) {
+    homeView?.startLoading()
+    
+    APIManager.sharedInstance.searchTv(tvName: name, completionHandler: { (baseResponse) in
+      self.homeView?.finishLoading()
+      
+      var movies = [Movie]()
+      let coversResponse = baseResponse?.results as! Array<NSDictionary>
+      movies = coversResponse.map({ (responseDictionary) -> Movie in
+        Mapper<Movie>().map(JSONObject: responseDictionary)!
+      })
+      
       self.homeView?.setContent(moviesList: movies)
     });
   }

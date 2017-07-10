@@ -37,6 +37,8 @@
 		B09E91E91F0410E900757ED0 /* MovieChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09E91E81F0410E900757ED0 /* MovieChooserView.swift */; };
 		B0C5AFC11F03EA7200132D45 /* MovieChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5AFC01F03EA7200132D45 /* MovieChooserViewController.swift */; };
 		B0C5AFC31F03EA8C00132D45 /* MovieChooserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5AFC21F03EA8C00132D45 /* MovieChooserPresenter.swift */; };
+		B0D3BBD81F13FC86004EFA5D /* TvRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3BBD71F13FC86004EFA5D /* TvRouter.swift */; };
+		B0D3BBDA1F13FCA6004EFA5D /* ApiManagerTvExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3BBD91F13FCA6004EFA5D /* ApiManagerTvExtension.swift */; };
 		D14112EAA02E87CA15353723 /* Pods_moviedb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F213F07A917D842A359E5BE /* Pods_moviedb.framework */; };
 		E530EE6F1F0AC07C00FAE56C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E530EE6E1F0AC07C00FAE56C /* CoreData.framework */; };
 		E530EE751F0AC21600FAE56C /* moviedb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E530EE731F0AC21600FAE56C /* moviedb.xcdatamodeld */; };
@@ -108,6 +110,8 @@
 		B09E91E81F0410E900757ED0 /* MovieChooserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieChooserView.swift; sourceTree = "<group>"; };
 		B0C5AFC01F03EA7200132D45 /* MovieChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieChooserViewController.swift; sourceTree = "<group>"; };
 		B0C5AFC21F03EA8C00132D45 /* MovieChooserPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieChooserPresenter.swift; sourceTree = "<group>"; };
+		B0D3BBD71F13FC86004EFA5D /* TvRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvRouter.swift; sourceTree = "<group>"; };
+		B0D3BBD91F13FCA6004EFA5D /* ApiManagerTvExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerTvExtension.swift; sourceTree = "<group>"; };
 		B68F6D8F731C3D655A610BF2 /* Pods-moviedb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviedb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moviedb/Pods-moviedb.debug.xcconfig"; sourceTree = "<group>"; };
 		E530EE6E1F0AC07C00FAE56C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E530EE741F0AC21600FAE56C /* moviedb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = moviedb.xcdatamodel; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				B0194E3E1F06EC78001FDB19 /* BaseRouterManager.swift */,
 				B0194E401F06EC9A001FDB19 /* RouterManager.swift */,
 				B0194E441F083699001FDB19 /* GenreRouter.swift */,
+				B0D3BBD71F13FC86004EFA5D /* TvRouter.swift */,
 			);
 			name = Routers;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				B07FCAC61EFF000F00484344 /* ApiManager.swift */,
 				B0194E421F06FBE6001FDB19 /* ApiManagerMoviesExtension.swift */,
 				B0194E461F08375F001FDB19 /* ApiManagerGenreExtension.swift */,
+				B0D3BBD91F13FCA6004EFA5D /* ApiManagerTvExtension.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -579,6 +585,8 @@
 				B07FCAC71EFF001000484344 /* ApiManager.swift in Sources */,
 				B07FCAD31EFF199600484344 /* ContentDetailViewController.swift in Sources */,
 				B081F73E1F02BC25009124FC /* Genre.swift in Sources */,
+				B0D3BBD81F13FC86004EFA5D /* TvRouter.swift in Sources */,
+				B0D3BBDA1F13FCA6004EFA5D /* ApiManagerTvExtension.swift in Sources */,
 				B081F73A1F029096009124FC /* Video.swift in Sources */,
 				B09D409D1F0440F100F2A546 /* MoviesRouter.swift in Sources */,
 				B0194E3F1F06EC78001FDB19 /* BaseRouterManager.swift in Sources */,

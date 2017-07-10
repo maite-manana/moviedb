@@ -13,6 +13,13 @@ import DZNEmptyDataSet
 
 class HomeViewController: UIViewController {
   
+  fileprivate enum SegmentedControlIndex : Int {
+    case movie
+    case tv
+  }
+  
+  fileprivate var kSelected = 0
+  
   @IBOutlet weak var moviesTableView: UITableView!
   @IBOutlet weak var loadingView: UILoadingView!
   
@@ -33,6 +40,15 @@ class HomeViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     moviesTableView.tableFooterView = UIView(frame: CGRect.zero)
+  }
+  @IBAction func indexChanged(_ sender: UISegmentedControl) {
+    if sender.selectedSegmentIndex == SegmentedControlIndex.movie.rawValue {
+      kSelected = 0
+      homePresenter.getContent()
+    } else {
+      kSelected = 1
+      homePresenter.getTvContent()
+    }
   }
 }
 
@@ -127,12 +143,20 @@ extension HomeViewController : UISearchBarDelegate {
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-      homePresenter.searchMovie(name: searchText)
+      if kSelected == SegmentedControlIndex.movie.rawValue {
+        homePresenter.searchMovie(name: searchText)
+      } else {
+        homePresenter.searchTv(name: searchText)
+      }
     }
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    homePresenter.getContent()
+    if kSelected == SegmentedControlIndex.movie.rawValue {
+      homePresenter.getContent()
+    } else {
+      homePresenter.getTvContent()
+    }
   }
 }
 

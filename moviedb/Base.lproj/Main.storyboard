@@ -111,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-20-qh2" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-20-qh2" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
                                 <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -278,8 +278,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tad-2n-Vnz">
+                                <rect key="frame" x="119" y="72" width="137" height="29"/>
+                                <segments>
+                                    <segment title="Películas"/>
+                                    <segment title="Series"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="czy-cG-hQD" eventType="valueChanged" id="fN0-4c-84K"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LXX-YQ-l1W">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZu-wP-UlW" customClass="UILoadingView" customModule="moviedb" customModuleProvider="target">
@@ -293,12 +303,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tad-2n-Vnz" firstAttribute="top" secondItem="wuv-7R-8l6" secondAttribute="bottom" constant="8" id="G9t-jM-5qD"/>
                             <constraint firstItem="3ha-Jz-3oO" firstAttribute="top" secondItem="LXX-YQ-l1W" secondAttribute="bottom" id="QUl-P2-eJm"/>
                             <constraint firstItem="LXX-YQ-l1W" firstAttribute="leading" secondItem="6hC-Uo-R7J" secondAttribute="leading" id="RX9-ds-znZ"/>
                             <constraint firstAttribute="trailing" secondItem="LXX-YQ-l1W" secondAttribute="trailing" id="VBi-uz-E98"/>
                             <constraint firstItem="RZu-wP-UlW" firstAttribute="centerX" secondItem="6hC-Uo-R7J" secondAttribute="centerX" id="ZeQ-lx-PO0"/>
-                            <constraint firstItem="LXX-YQ-l1W" firstAttribute="top" secondItem="wuv-7R-8l6" secondAttribute="bottom" id="giq-mO-Xik"/>
                             <constraint firstItem="RZu-wP-UlW" firstAttribute="centerY" secondItem="6hC-Uo-R7J" secondAttribute="centerY" id="qgc-Us-5af"/>
+                            <constraint firstItem="Tad-2n-Vnz" firstAttribute="centerX" secondItem="6hC-Uo-R7J" secondAttribute="centerX" id="rkj-Rl-Ff4"/>
+                            <constraint firstItem="LXX-YQ-l1W" firstAttribute="top" secondItem="Tad-2n-Vnz" secondAttribute="bottom" constant="20" id="vU7-xE-fUi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inicio" id="hUJ-Vn-uhO"/>
