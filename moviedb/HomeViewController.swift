@@ -95,8 +95,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
       } else if let content_name = self.contentList[indexPath.row].name {
         title = content_name
       }
-      let posterPath = self.contentList[indexPath.row].posterPath!
-      let overview = self.contentList[indexPath.row].overview!
+
+      let posterPath: String = self.contentList[indexPath.row].posterPath ?? ""
+      let overview: String = self.contentList[indexPath.row].overview ?? ""
 
       self.homePresenter.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
       tableView.setEditing(false, animated: true)

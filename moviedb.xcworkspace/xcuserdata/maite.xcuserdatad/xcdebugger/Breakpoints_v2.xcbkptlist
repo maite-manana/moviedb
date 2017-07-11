@@ -39,29 +39,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moviedb/ContentCell.swift"
-            timestampString = "521427538.441319"
+            filePath = "moviedb/FavHandler.swift"
+            timestampString = "521430237.346317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "configure(movie:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "addFav(id:title:posterPath:overview:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moviedb/ContentCell.swift"
-            timestampString = "521427502.610632"
+            filePath = "moviedb/ContentDetailPresenter.swift"
+            timestampString = "521430371.915819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "configure(movie:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "markAsFavourite(movie:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -28,7 +28,7 @@ class FavCell: UITableViewCell {
     }
 
     let poster = fav.posterPath
-    if poster != nil {
+    if poster != nil  && poster != "" {
       ImageViewUtils.loadImage(imageURL: poster!, imageView: self.poster!)
     } else {
       self.poster.image = UIImage(named: "defaultPoster")

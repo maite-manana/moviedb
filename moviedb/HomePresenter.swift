@@ -108,7 +108,9 @@ class HomePresenter {
   }
   
   func addFav(id: Int, title: String, posterPath: String, overview: String){
-    let response = FavHandler.addFav(id: id, title: title, posterPath: posterPath, overview: overview)
+    let moviePoster: String = posterPath ?? ""
+    let movieOverview: String = overview ?? ""
+    let response = FavHandler.addFav(id: id, title: title, posterPath: moviePoster, overview: movieOverview)
     switch response {
     case Constants.FavResults.kUnFavSuccess:
       homeView?.showSuccessUnfavMessage()

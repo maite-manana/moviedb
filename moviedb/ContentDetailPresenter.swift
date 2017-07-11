@@ -53,7 +53,11 @@ class ContentDetailPresenter {
     } else if let tvTitle = movie.name {
         title = tvTitle
     }
-    let response = FavHandler.addFav(id: movie.id!, title: title, posterPath: movie.posterPath!, overview: movie.overview!)
+
+    let posterPath: String = movie.posterPath ?? ""
+    let overview: String = movie.overview ?? ""
+
+    let response = FavHandler.addFav(id: movie.id!, title: title, posterPath: posterPath, overview: overview)
     switch response {
     case Constants.FavResults.kUnFavSuccess:
         contentDetailView?.showSuccessUnfavMessage()
