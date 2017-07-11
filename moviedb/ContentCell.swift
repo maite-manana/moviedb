@@ -28,7 +28,7 @@ class ContentCell: UITableViewCell {
     self.additionalData.text = movie.overview
     let poster = movie.posterPath
     if poster != nil {
-      self.poster.imageFromServerURL(urlString: Constants.APIConstants.kBaseImageURL +  poster!)
+      self.poster.imageFromServerURL(urlString: Constants.APIConstants.kBaseImageURL + poster!)
     }
     setupBackground()
   }
@@ -42,19 +42,18 @@ class ContentCell: UITableViewCell {
 }
 
 extension UIImageView {
-    public func imageFromServerURL(urlString: String) {
+  public func imageFromServerURL(urlString: String) {
         
-        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+  URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
             
-            if error != nil {
-                print(error)
-                return
-            }
-            DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                self.image = image
-            })
+    if error != nil {
+      return
+    }
+    DispatchQueue.main.async(execute: { () -> Void in
+      let image = UIImage(data: data!)
+      self.image = image
+    })
             
-        }).resume()
-    }}
+  }).resume()
+}}
 

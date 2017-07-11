@@ -8,6 +8,5 @@ target ‘moviedb’ do
   pod ‘DZNEmptyDataSet’, ‘~> 1.8.1’
   pod ’TabPageViewController’
   pod ’AlamofireObjectMapper’, ‘~> 4.0’
-  pod 'SDWebImage', '~>3.8'
 
 end
