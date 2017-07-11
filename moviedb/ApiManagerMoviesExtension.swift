@@ -27,11 +27,6 @@ extension APIManager {
     requestForObjectResponse(manager: BaseRouterManager.self, router: MoviesRouter.SearchMovie(movieName: movieName), completionHandler: completionHandler)
   }
   
-  func getSeries(completionHandler: @escaping MoviesCompletionHandler)
-  {
-    requestForObjectResponse(manager: BaseRouterManager.self, router: MoviesRouter.GetSeries(), completionHandler: completionHandler)
-  }
-  
   func getMoviesWithGenre(genresList: [String], pageNumber: Int, completionHandler: @escaping MoviesCompletionHandler)
   {
     requestForObjectResponse(manager: BaseRouterManager.self, router: MoviesRouter.GetMoviesWithGenre(genresList: genresList, page: pageNumber), completionHandler: completionHandler)

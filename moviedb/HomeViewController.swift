@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import TabPageViewController
 import DZNEmptyDataSet
 
 class HomeViewController: UIViewController {

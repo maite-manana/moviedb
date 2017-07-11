@@ -6,7 +6,6 @@ target ‘moviedb’ do
 
   pod ‘SwiftMessages’, ‘~>3.1.5’
   pod ‘DZNEmptyDataSet’, ‘~> 1.8.1’
-  pod ’TabPageViewController’
   pod ’AlamofireObjectMapper’, ‘~> 4.0’
 
 end

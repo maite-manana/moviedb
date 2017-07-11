@@ -8,10 +8,9 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 
 class ContentCell: UITableViewCell {
-    
+  
   @IBOutlet weak var poster: UIImageView!
   @IBOutlet weak var title: UILabel!
   @IBOutlet weak var additionalData: UILabel!
@@ -21,24 +20,24 @@ class ContentCell: UITableViewCell {
     self.selectionStyle = UITableViewCellSelectionStyle.none
     self.title.text = movie.title
     if let title = movie.title {
-        self.title.text = title
+      self.title.text = title
     } else if let name = movie.name {
-        self.title.text = name
+      self.title.text = name
     }
     if (self.title.text?.isEmpty)! {
-        self.title.text = Constants.DefaultTexts.kDefaultTitle
+      self.title.text = Constants.DefaultTexts.kDefaultTitle
     }
     
     self.additionalData.text = movie.overview
     if (self.additionalData.text?.isEmpty)! {
-        self.additionalData.text = Constants.DefaultTexts.kDefaultOverview
+      self.additionalData.text = Constants.DefaultTexts.kDefaultOverview
     }
     
     let poster = movie.posterPath
     if poster != nil {
       self.poster.imageFromServerURL(urlString: Constants.APIConstants.kBaseImageURL + poster!)
     } else {
-        self.poster.image = UIImage(named: "defaultPoster")
+      self.poster.image = UIImage(named: "defaultPoster")
     }
     setupBackground()
   }
@@ -50,20 +49,3 @@ class ContentCell: UITableViewCell {
     backgroundCardView?.layer.masksToBounds = false
   }
 }
-
-extension UIImageView {
-  public func imageFromServerURL(urlString: String) {
-        
-  URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
-            
-    if error != nil {
-      return
-    }
-    DispatchQueue.main.async(execute: { () -> Void in
-      let image = UIImage(data: data!)
-      self.image = image
-    })
-            
-  }).resume()
-}}
-

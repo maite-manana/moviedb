@@ -15,6 +15,7 @@
 		B0194E491F084008001FDB19 /* ShareUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0194E481F084008001FDB19 /* ShareUtils.swift */; };
 		B01C2FBA1F0D5DD000A2C820 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */; };
 		B02734821F0697B7009020EF /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02734811F0697B7009020EF /* ImageViewUtils.swift */; };
+		B0363C191F145F94000AD1F6 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0363C181F145F94000AD1F6 /* UIImageViewExtension.swift */; };
 		B07FCAC71EFF001000484344 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FCAC61EFF000F00484344 /* ApiManager.swift */; };
 		B07FCAC91EFF00AB00484344 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FCAC81EFF00AB00484344 /* Constants.swift */; };
 		B07FCACC1EFF040C00484344 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FCACB1EFF040C00484344 /* BaseResponse.swift */; };
@@ -89,6 +90,7 @@
 		B0194E481F084008001FDB19 /* ShareUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareUtils.swift; sourceTree = "<group>"; };
 		B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B02734811F0697B7009020EF /* ImageViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
+		B0363C181F145F94000AD1F6 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		B07FCAC61EFF000F00484344 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		B07FCAC81EFF00AB00484344 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B07FCACB1EFF040C00484344 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				B01C2FB91F0D5DD000A2C820 /* UIColorExtension.swift */,
+				B0363C181F145F94000AD1F6 /* UIImageViewExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 			files = (
 				B0C5AFC11F03EA7200132D45 /* MovieChooserViewController.swift in Sources */,
 				B09E91E51F0410B300757ED0 /* ContentDetailView.swift in Sources */,
+				B0363C191F145F94000AD1F6 /* UIImageViewExtension.swift in Sources */,
 				B09D409B1F04409500F2A546 /* Router.swift in Sources */,
 				B081F7431F02BF46009124FC /* RandomChooserViewController.swift in Sources */,
 				E53526A21EF1C33300AE911A /* AppDelegate.swift in Sources */,

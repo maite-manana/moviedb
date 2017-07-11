@@ -13,12 +13,11 @@ enum MoviesRouter: Router {
   case GetMoviesNowPlaying()
   case GatVideos(movieId: String)
   case SearchMovie(movieName: String)
-  case GetSeries()
   case GetMoviesWithGenre(genresList: [String], page: Int)
   
   var params: Dictionary<String, AnyObject>? {
     switch self {
-    case .GetMoviesNowPlaying(), .GatVideos(_), .GetSeries():
+    case .GetMoviesNowPlaying(), .GatVideos(_):
       return ["api_key" : Constants.APIConstants.kApiKey as AnyObject]
       
     case .SearchMovie(let movieName):
@@ -43,8 +42,6 @@ enum MoviesRouter: Router {
       return "/movie/\(id)/videos"
     case .SearchMovie(_):
       return "/search/movie"
-    case .GetSeries():
-      return "/discover/tv"
     case .GetMoviesWithGenre(_):
       return "/discover/movie"
     }
