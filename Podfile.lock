@@ -5,13 +5,16 @@ PODS:
     - ObjectMapper (~> 2.0)
   - DZNEmptyDataSet (1.8.1)
   - ObjectMapper (2.2.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SwiftMessages (3.1.5)
   - TabPageViewController (0.2.7)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.4)
   - AlamofireObjectMapper (~> 4.0)
   - DZNEmptyDataSet (~> 1.8.1)
+  - SDWebImage (~> 3.8)
   - SwiftMessages (~> 3.1.5)
   - TabPageViewController
 
@@ -20,9 +23,10 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   TabPageViewController: c37a1257a50c2b50712dde61bf499768eee95b67
 
-PODFILE CHECKSUM: 472c78d647f2588fcf2c14e66572e9a0315d5728
+PODFILE CHECKSUM: cb189c4ad5d3860a490de4f19f7b66ac18d3624e
 
 COCOAPODS: 1.2.1

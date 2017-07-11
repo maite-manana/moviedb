@@ -154,6 +154,7 @@ extension HomeViewController : UISearchBarDelegate {
         homePresenter.searchTv(name: searchText)
       }
     }
+    searchController.isActive = false
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

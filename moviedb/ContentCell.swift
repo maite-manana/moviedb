@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class ContentCell: UITableViewCell {
     
@@ -27,7 +28,7 @@ class ContentCell: UITableViewCell {
     self.additionalData.text = movie.overview
     let poster = movie.posterPath
     if poster != nil {
-      ImageViewUtils.loadImage(imageURL: poster!, imageView: self.poster!)
+      self.poster.imageFromServerURL(urlString: Constants.APIConstants.kBaseImageURL +  poster!)
     }
     setupBackground()
   }
@@ -39,3 +40,21 @@ class ContentCell: UITableViewCell {
     backgroundCardView?.layer.masksToBounds = false
   }
 }
+
+extension UIImageView {
+    public func imageFromServerURL(urlString: String) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
+    }}
+
