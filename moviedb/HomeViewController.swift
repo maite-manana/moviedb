@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     homePresenter.attachView(self)
     loadingView.setupLoadingIndicator()
     setupContentTable()
+    self.searchController.hidesNavigationBarDuringPresentation = false
     homePresenter.getContent()
   }
   
