@@ -25,10 +25,20 @@ class ContentCell: UITableViewCell {
     } else if let name = movie.name {
         self.title.text = name
     }
+    if (self.title.text?.isEmpty)! {
+        self.title.text = Constants.DefaultTexts.kDefaultTitle
+    }
+    
     self.additionalData.text = movie.overview
+    if (self.additionalData.text?.isEmpty)! {
+        self.additionalData.text = Constants.DefaultTexts.kDefaultOverview
+    }
+    
     let poster = movie.posterPath
     if poster != nil {
       self.poster.imageFromServerURL(urlString: Constants.APIConstants.kBaseImageURL + poster!)
+    } else {
+        self.poster.image = UIImage(named: "defaultPoster")
     }
     setupBackground()
   }

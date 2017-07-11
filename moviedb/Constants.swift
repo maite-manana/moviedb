@@ -44,4 +44,9 @@ struct Constants {
     static let kUnFavError = "UNFAV_ERROR"
         
   }
+    
+  struct DefaultTexts {
+    static let kDefaultTitle = "Título no disponible"
+    static let kDefaultOverview = "Descripción no disponible"
+  }
 }

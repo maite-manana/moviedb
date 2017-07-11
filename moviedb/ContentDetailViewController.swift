@@ -38,12 +38,21 @@ class ContentDetailViewController : UIViewController {
     } else if let name = selectedContent.name {
       contentTitle.text = name
     }
+    if (contentTitle.text?.isEmpty)! {
+      contentTitle.text = Constants.DefaultTexts.kDefaultTitle
+    }
+    
     contentDescription.text = selectedContent.overview
+    if (contentDescription.text?.isEmpty)! {
+        contentDescription.text = Constants.DefaultTexts.kDefaultOverview
+    }
     contentDescription.sizeToFit()
     
     if selectedContent.posterPath != nil {
       ImageViewUtils.loadImage(imageURL: selectedContent.posterPath!, imageView: contentImage)
-    }  
+    } else {
+      contentImage.image = UIImage(named: "defaultPoster")
+    }
     setFavButton(favImage: #imageLiteral(resourceName: "heartfill"), notFavImage: #imageLiteral(resourceName: "heart"))
     
     let shareButton = UIBarButtonItem.init(barButtonSystemItem: .action, target: self, action: #selector(shareContent))

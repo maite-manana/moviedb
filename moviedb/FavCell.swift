@@ -18,10 +18,20 @@ class FavCell: UITableViewCell {
   func configure(fav: Fav) {
     self.selectionStyle = UITableViewCellSelectionStyle.none
     self.title.text = fav.title
+    if (self.title.text?.isEmpty)! {
+        self.title.text = Constants.DefaultTexts.kDefaultTitle
+    }
+    
     self.overview.text = fav.overview
+    if (self.overview.text?.isEmpty)! {
+      self.overview.text = Constants.DefaultTexts.kDefaultOverview
+    }
+
     let poster = fav.posterPath
     if poster != nil {
       ImageViewUtils.loadImage(imageURL: poster!, imageView: self.poster!)
+    } else {
+      self.poster.image = UIImage(named: "defaultPoster")
     }
     setupBackground()
   }
